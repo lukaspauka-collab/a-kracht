@@ -1,16 +1,61 @@
-export default function Home() {
+"use client";
+
+import { useCallback, useEffect, useState } from "react";
+import SiteHeader from "@/components/SiteHeader";
+import SiteFooter from "@/components/SiteFooter";
+import HomePage from "@/components/HomePage";
+import OverPage from "@/components/OverPage";
+import DienstenPage from "@/components/DienstenPage";
+import ContactPage from "@/components/ContactPage";
+import type { Page } from "@/components/site";
+
+export default function Site() {
+  const [page, setPage] = useState<Page>("home");
+
+  const navigate = useCallback((next: Page) => {
+    setPage(next);
+    window.scrollTo(0, 0);
+  }, []);
+
+  // Scroll-reveal: fade + rise each [data-reveal] section into view as it
+  // enters the viewport. Re-runs whenever the active page changes so the new
+  // page's sections animate in. Mirrors the original design's IntersectionObserver.
+  useEffect(() => {
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const els = Array.from(
+      document.querySelectorAll<HTMLElement>("[data-reveal]"),
+    );
+
+    if (reduce) {
+      els.forEach((el) => el.classList.add("is-visible"));
+      return;
+    }
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-visible");
+          io.unobserve(entry.target);
+        });
+      },
+      { rootMargin: "0px 0px -8% 0px", threshold: 0.05 },
+    );
+
+    els.forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, [page]);
+
   return (
-    <main className="flex flex-1 flex-col items-center justify-center gap-6 px-6 text-center">
-      <h1 className="text-4xl font-semibold tracking-tight sm:text-6xl">
-        growyour.music
-      </h1>
-      <p className="max-w-md text-lg text-black/60 dark:text-white/60">
-        Grow your music. The base is set up — start building here in{" "}
-        <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-          src/app/page.tsx
-        </code>
-        .
-      </p>
-    </main>
+    <div className="site">
+      <SiteHeader page={page} navigate={navigate} />
+      <main>
+        {page === "home" && <HomePage navigate={navigate} />}
+        {page === "over" && <OverPage />}
+        {page === "diensten" && <DienstenPage navigate={navigate} />}
+        {page === "contact" && <ContactPage />}
+      </main>
+      <SiteFooter navigate={navigate} />
+    </div>
   );
 }
