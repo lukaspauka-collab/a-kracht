@@ -114,7 +114,7 @@ export default function OrganisatiePage() {
   return (
     <div>
       {/* header */}
-      <section data-reveal style={{ padding: "72px 24px 56px" }}>
+      <section data-reveal className="pad-head" style={{ padding: "72px 24px 56px" }}>
         <div className="container" style={{ padding: 0 }}>
           <p className="eyebrow" style={{ margin: "0 0 14px" }}>
             Over de organisatie
@@ -130,7 +130,7 @@ export default function OrganisatiePage() {
       </section>
 
       {/* wie zijn wij */}
-      <section data-reveal style={{ padding: "0 24px 88px" }}>
+      <section data-reveal className="pad-b" style={{ padding: "0 24px 88px" }}>
         <div
           className="container split"
           style={{
@@ -191,6 +191,7 @@ export default function OrganisatiePage() {
       {/* contact- en organisatiegegevens */}
       <section
         data-reveal
+        className="pad-lg"
         style={{
           background: "var(--paper)",
           borderTop: "1px solid var(--border)",
@@ -248,7 +249,7 @@ export default function OrganisatiePage() {
       </section>
 
       {/* zorgaanbod en doelgroep */}
-      <section data-reveal style={{ padding: "88px 24px" }}>
+      <section data-reveal className="pad-lg" style={{ padding: "88px 24px" }}>
         <div className="container" style={{ padding: 0 }}>
           <div
             style={{
@@ -297,6 +298,7 @@ export default function OrganisatiePage() {
       {/* kwaliteit en veiligheid */}
       <section
         data-reveal
+        className="pad-lg"
         style={{
           background: "var(--paper)",
           borderTop: "1px solid var(--border)",
@@ -352,7 +354,7 @@ export default function OrganisatiePage() {
       </section>
 
       {/* klachten en geschillen */}
-      <section data-reveal style={{ padding: "88px 24px" }}>
+      <section data-reveal className="pad-lg" style={{ padding: "88px 24px" }}>
         <div
           className="container split"
           style={{
@@ -406,6 +408,7 @@ export default function OrganisatiePage() {
       {/* aanmelden */}
       <section
         data-reveal
+        className="pad-lg"
         style={{ background: "var(--sage)", color: "#FCFAF7", padding: "76px 24px" }}
       >
         <div
@@ -460,7 +463,7 @@ export default function OrganisatiePage() {
       </section>
 
       {/* medezeggenschap / cliëntenraad */}
-      <section data-reveal style={{ padding: "88px 24px" }}>
+      <section data-reveal className="pad-lg" style={{ padding: "88px 24px" }}>
         <div className="container" style={{ padding: 0 }}>
           <div style={{ maxWidth: "62ch", marginBottom: 44 }}>
             <p className="eyebrow">Medezeggenschap</p>
@@ -554,6 +557,7 @@ export default function OrganisatiePage() {
       {/* privacyverklaring */}
       <section
         data-reveal
+        className="pad-lg"
         style={{
           background: "var(--paper)",
           borderTop: "1px solid var(--border)",
