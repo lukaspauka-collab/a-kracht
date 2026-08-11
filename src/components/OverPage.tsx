@@ -1,131 +1,22 @@
 import ImageSlot from "./ImageSlot";
+import type { SiteContent } from "@/content/types";
 
-const TIMELINE = [
-  {
-    year: "2003",
-    strong: "Eerste stap in de zorg.",
-    text: " Begonnen in een begeleid woonproject voor mensen met een licht verstandelijke beperking en onder meer autisme.",
-  },
-  {
-    year: "2006",
-    strong: "Diploma SPH.",
-    text: " Sociaal Pedagogische Hulpverlening afgerond aan de Hogeschool van Arnhem en Nijmegen.",
-  },
-  {
-    year: "2010",
-    strong: "Naar de GGZ.",
-    text: " Werken met complexere zorgvragen en gedwongen kaders, en steeds meer volwassenen met autisme.",
-  },
-  {
-    year: "14,5 jaar",
-    strong: "Vaste grond.",
-    text: " Het autisme-team van RIBW K/AM: beschermd wonen én ambulante ondersteuning voor mensen met autisme.",
-  },
-  {
-    year: "2014–2022",
-    strong: "Autisme-consulent.",
-    text: " Naast het team: bij het Regionaal Autisme Centrum Zuid-Kennemerland mensen met autisme en hun omgeving op weg helpen naar passende ondersteuning.",
-  },
-  {
-    year: "2021–2023",
-    strong: "Specialisatie.",
-    text: " Autisme-deskundige en -specialist via de RINO Groep, gericht op autisme en comorbiditeit.",
-  },
-  {
-    year: "2023–2025",
-    strong: "Delen wat ik weet.",
-    text: " Samen met ervaringsdeskundigen de basis-cursus autisme gegeven binnen RIBW K/AM.",
-  },
-  {
-    year: "2025",
-    strong: "A-Kracht begeleiding.",
-    text: " Zelfstandig verder, aangesloten bij Coöperatie de Delta.",
-    accent: true,
-  },
-];
+type OverContent = SiteContent["over"];
 
-const FOCUS = [
-  {
-    n: "01",
-    title: "Autisme en comorbiditeit",
-    text: "De laatste jaren begeleid ik vooral volwassenen met autisme en bijkomende problematiek, zoals angst, stemmingsklachten of trauma. Autisme staat bijna nooit alleen.",
-  },
-  {
-    n: "02",
-    title: "Vitaal versterkend werken",
-    text: "We versterken veerkracht, leren verbanden zien en zoeken naar een betekenisvolle daginvulling. Kwetsbaarheden ondersteunen en wat goed gaat, versterken.",
-  },
-  {
-    n: "03",
-    title: "Leren en delen",
-    text: "Samen met ervaringsdeskundigen gaf ik jarenlang de basis-cursus autisme. En als collega's vastlopen in complexe situaties, denk ik graag mee.",
-  },
-];
-
-const METHOD = [
-  {
-    n: "01",
-    title: "Leren kennen",
-    text: "Ik neem de tijd voordat er doelen op papier staan. Wat werkt bij jou, en wat juist niet?",
-  },
-  {
-    n: "02",
-    title: "Klein beginnen",
-    text: "Eén ding tegelijk, in stappen die haalbaar zijn. Liever langzaam vooruit dan snel terug.",
-  },
-  {
-    n: "03",
-    title: "Bijstellen",
-    text: "Elk half jaar samen evalueren — en tussendoor gewoon, wanneer het nodig is.",
-  },
-];
-
-const EDUCATION = [
-  ["SPW, ROC Nijmegen", "2001"],
-  ["HBO Sociaal Pedagogische Hulpverlening, HAN", "2005"],
-  ["Autisme-deskundige, RINO Groep", "2021"],
-  ["Autisme-specialist — autisme & comorbiditeit, RINO Groep", "2023"],
-  ["Registratie SKJ / Registerplein", "actief"],
-  ["VOG en aansluiting klachtenregeling", "via de Delta"],
-];
-
-const PRACTICE = [
-  {
-    border: "var(--sage)",
-    title: "Veiligheid",
-    text: "Vaste dagstructuur, aangekondigde veranderingen en een prikkelarme inrichting van het huis.",
-  },
-  {
-    border: "var(--clay)",
-    title: "Kleinschaligheid",
-    text: "Negen bewoners betekent: tijd voor een gesprek, en iemand die merkt dat het niet lekker gaat.",
-  },
-  {
-    border: "var(--blue)",
-    title: "Eigen regie",
-    text: "Doelen worden samen bepaald en regelmatig bijgesteld — geen plan dat een jaar in een la ligt.",
-  },
-  {
-    border: "var(--sage)",
-    title: "Echt contact",
-    text: "Naast elkaar staan in plaats van tegenover elkaar, ook wanneer het even schuurt.",
-  },
-];
-
-export default function OverPage() {
+export default function OverPage({ content }: { content: OverContent }) {
   return (
     <div>
       {/* header */}
       <section data-reveal className="pad-head" style={{ padding: "72px 24px 40px" }}>
         <div className="container" style={{ padding: 0 }}>
           <p className="eyebrow" style={{ margin: "0 0 14px" }}>
-            Over mij
+            {content.eyebrow}
           </p>
           <h1
             className="page-title"
             style={{ margin: "0 0 22px", maxWidth: "18ch" }}
           >
-            Moniek Zondag
+            {content.name}
           </h1>
           <p
             className="serif"
@@ -137,16 +28,16 @@ export default function OverPage() {
               maxWidth: "40ch",
             }}
           >
-            &ldquo;Ik wilde zorg maken die ik zelf zou willen krijgen.&rdquo;
+            &ldquo;{content.quote}&rdquo;
           </p>
           <a
-            href="https://www.linkedin.com/in/moniek-zondag-a7a79542/"
+            href={content.linkedinHref}
             target="_blank"
             rel="noreferrer"
             className="link-quiet"
             style={{ marginTop: 26, display: "inline-block" }}
           >
-            Bekijk mijn LinkedIn-profiel →
+            {content.linkedinLabel} →
           </a>
         </div>
       </section>
@@ -184,8 +75,8 @@ export default function OverPage() {
               }}
             >
               <ImageSlot
-                src="/images/portret-moniek.jpg"
-                placeholder="Portretfoto Moniek"
+                src={content.portrait.src}
+                placeholder={content.portrait.placeholder}
               />
             </div>
           </div>
@@ -198,10 +89,7 @@ export default function OverPage() {
                 margin: "0 0 20px",
               }}
             >
-              Ik werk ruim twintig jaar in de zorg voor mensen met autisme. In
-              die jaren zag ik hoe vaak het misgaat op dezelfde plekken: te grote
-              groepen, te veel wisselingen, te weinig tijd om iemand echt te
-              leren kennen.
+              {content.intro1}
             </p>
             <p
               style={{
@@ -211,9 +99,7 @@ export default function OverPage() {
                 margin: "0 0 20px",
               }}
             >
-              A-Kracht begeleiding is mijn antwoord daarop. Een klein huis, een
-              vast team en de ruimte om te doen wat nodig is — niet wat het
-              rooster toelaat.
+              {content.intro2}
             </p>
             <p
               style={{
@@ -223,17 +109,14 @@ export default function OverPage() {
                 margin: "0 0 42px",
               }}
             >
-              Ik heb me daarin blijven specialiseren: als autisme-deskundige en
-              -specialist bij de RINO Groep, gericht op autisme met
-              comorbiditeit. In de praktijk betekent dat: samen uitzoeken hoe
-              jij je autisme herkent, wat je helpt en wat juist niet.
+              {content.intro3}
             </p>
 
             <h2
               className="serif"
               style={{ fontSize: 23, fontWeight: 600, margin: "0 0 26px" }}
             >
-              Mijn weg hierheen
+              {content.timelineTitle}
             </h2>
             <ol
               style={{
@@ -246,7 +129,7 @@ export default function OverPage() {
                 gap: 28,
               }}
             >
-              {TIMELINE.map((t) => (
+              {content.timeline.map((t) => (
                 <li key={t.year} style={{ position: "relative" }}>
                   <span
                     style={{
@@ -308,7 +191,7 @@ export default function OverPage() {
               className="serif"
               style={{ fontSize: 28, fontWeight: 500, margin: "0 0 16px" }}
             >
-              Missie
+              {content.missionTitle}
             </h2>
             <p
               style={{
@@ -318,9 +201,7 @@ export default function OverPage() {
                 fontSize: 16.5,
               }}
             >
-              Een plek bieden waar mensen met autisme veilig kunnen wonen en
-              zichzelf mogen zijn, met begeleiding die meebeweegt met wat iemand
-              op dat moment aankan.
+              {content.missionText}
             </p>
           </div>
           <div>
@@ -328,7 +209,7 @@ export default function OverPage() {
               className="serif"
               style={{ fontSize: 28, fontWeight: 500, margin: "0 0 16px" }}
             >
-              Visie
+              {content.visionTitle}
             </h2>
             <p
               style={{
@@ -338,9 +219,7 @@ export default function OverPage() {
                 fontSize: 16.5,
               }}
             >
-              Goede zorg is klein, langdurig en persoonlijk. Vertrouwen groeit in
-              de tijd — daarom bouwen we op vaste gezichten in plaats van op
-              protocollen.
+              {content.visionText}
             </p>
           </div>
         </div>
@@ -350,7 +229,7 @@ export default function OverPage() {
       <section data-reveal style={{ padding: "88px 24px 0" }}>
         <div className="container" style={{ padding: 0 }}>
           <h2 className="section-title" style={{ fontSize: 32, margin: "0 0 18px" }}>
-            Waar ik me op richt
+            {content.focusTitle}
           </h2>
           <p
             style={{
@@ -361,9 +240,7 @@ export default function OverPage() {
               fontSize: 16.5,
             }}
           >
-            In de loop van de jaren is mijn werk zich steeds meer gaan richten
-            op volwassenen met autisme én bijkomende problematiek. Drie dingen
-            die daarin centraal staan.
+            {content.focusLead}
           </p>
           <div
             className="grid-3"
@@ -373,7 +250,7 @@ export default function OverPage() {
               gap: 22,
             }}
           >
-            {FOCUS.map((f) => (
+            {content.focus.map((f) => (
               <div key={f.n} className="card" style={{ padding: "30px 32px" }}>
                 <p
                   className="serif"
@@ -395,7 +272,7 @@ export default function OverPage() {
       <section data-reveal className="pad-t" style={{ padding: "88px 24px 0" }}>
         <div className="container" style={{ padding: 0 }}>
           <h2 className="section-title" style={{ fontSize: 32, margin: "0 0 18px" }}>
-            Hoe ik werk
+            {content.methodTitle}
           </h2>
           <p
             style={{
@@ -406,8 +283,7 @@ export default function OverPage() {
               fontSize: 16.5,
             }}
           >
-            Geen standaardaanpak, wel een vaste manier van beginnen: eerst kijken
-            en luisteren, dan pas doen.
+            {content.methodLead}
           </p>
           <div
             className="grid-3"
@@ -417,7 +293,7 @@ export default function OverPage() {
               gap: 22,
             }}
           >
-            {METHOD.map((m) => (
+            {content.method.map((m) => (
               <div key={m.n} className="card" style={{ padding: "30px 32px" }}>
                 <p
                   className="serif"
@@ -449,12 +325,12 @@ export default function OverPage() {
               className="serif"
               style={{ fontSize: 26, fontWeight: 500, margin: 0 }}
             >
-              Opleiding &amp; registratie
+              {content.educationTitle}
             </h2>
             <div style={{ display: "flex", flexDirection: "column" }}>
-              {EDUCATION.map(([label, meta]) => (
+              {content.education.map((row) => (
                 <div
-                  key={label}
+                  key={row.label}
                   style={{
                     display: "flex",
                     justifyContent: "space-between",
@@ -465,9 +341,9 @@ export default function OverPage() {
                     borderBottom: "1px solid var(--border)",
                   }}
                 >
-                  <span style={{ fontSize: 15.5 }}>{label}</span>
+                  <span style={{ fontSize: 15.5 }}>{row.label}</span>
                   <span style={{ fontSize: 15, color: "var(--muted)" }}>
-                    {meta}
+                    {row.meta}
                   </span>
                 </div>
               ))}
@@ -480,7 +356,7 @@ export default function OverPage() {
       <section data-reveal className="pad-lg" style={{ padding: "88px 24px" }}>
         <div className="container" style={{ padding: 0 }}>
           <h2 className="section-title" style={{ fontSize: 32, margin: "0 0 40px" }}>
-            Kernwaarden in de praktijk
+            {content.practiceTitle}
           </h2>
           <div
             className="grid-2"
@@ -490,7 +366,7 @@ export default function OverPage() {
               gap: 22,
             }}
           >
-            {PRACTICE.map((p, i) => (
+            {content.practice.map((p, i) => (
               <article
                 key={i}
                 className="card"

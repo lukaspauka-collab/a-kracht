@@ -1,43 +1,22 @@
 import type { MetadataRoute } from "next";
-import { SITE } from "@/components/site";
+import { getContent } from "@/content/lib";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export const dynamic = "force-dynamic";
+
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const url = (await getContent()).site.url;
+  const entry = (path: string, priority: number, frequency: MetadataRoute.Sitemap[number]["changeFrequency"]) => ({
+    url: `${url}${path}`,
+    lastModified: new Date(),
+    changeFrequency: frequency,
+    priority,
+  });
   return [
-    {
-      url: SITE.url,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 1,
-    },
-    {
-      url: `${SITE.url}/over`,
-      lastModified: new Date(),
-      changeFrequency: "yearly",
-      priority: 0.8,
-    },
-    {
-      url: `${SITE.url}/diensten`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.9,
-    },
-    {
-      url: `${SITE.url}/organisatie`,
-      lastModified: new Date(),
-      changeFrequency: "yearly",
-      priority: 0.6,
-    },
-    {
-      url: `${SITE.url}/contact`,
-      lastModified: new Date(),
-      changeFrequency: "yearly",
-      priority: 0.7,
-    },
-    {
-      url: `${SITE.url}/privacy`,
-      lastModified: new Date(),
-      changeFrequency: "yearly",
-      priority: 0.5,
-    },
+    entry("/", 1, "monthly"),
+    entry("/over", 0.8, "yearly"),
+    entry("/diensten", 0.9, "monthly"),
+    entry("/organisatie", 0.6, "yearly"),
+    entry("/contact", 0.7, "yearly"),
+    entry("/privacy", 0.5, "yearly"),
   ];
 }

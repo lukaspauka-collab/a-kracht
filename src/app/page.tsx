@@ -1,51 +1,56 @@
 import type { Metadata } from "next";
 import HomePage from "@/components/HomePage";
 import JsonLd from "./jsonld";
+import { getContent } from "@/content/lib";
 
-export const metadata: Metadata = {
-  title: "Kleinschalige begeleiding bij autisme",
-  description:
-    "Een klein, huiselijk huis in Delfgauw voor negen bewoners. Kleinschalige 24-uurszorg en overbruggingszorg voor mensen met autisme. Opgezet en geleid door Moniek Zondag.",
-  alternates: {
-    canonical: "/",
-  },
-  openGraph: {
-    title: "A-Kracht begeleiding — Kleinschalige begeleiding bij autisme",
-    description:
-      "Een klein, huiselijk huis in Delfgauw voor negen bewoners. 24-uurszorg en overbruggingszorg voor mensen met autisme.",
-  },
-};
+export const dynamic = "force-dynamic";
 
-export default function Home() {
+export async function generateMetadata(): Promise<Metadata> {
+  const s = (await getContent()).site;
+  return {
+    title: "Kleinschalige begeleiding bij autisme",
+    description: s.description,
+    alternates: {
+      canonical: "/",
+    },
+    openGraph: {
+      title: `${s.name} — Kleinschalige begeleiding bij autisme`,
+      description: s.description,
+    },
+  };
+}
+
+export default async function Home() {
+  const content = await getContent();
+  const s = content.site;
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": ["Organization", "LocalBusiness"],
-    "@id": "https://a-kracht.nl/#organization",
-    name: "A-Kracht begeleiding",
-    url: "https://a-kracht.nl",
-    logo: "https://a-kracht.nl/favicon.ico",
-    description:
-      "Kleinschalige 24-uurszorg en overbruggingszorg voor mensen met autisme in Delfgauw. Een huis voor negen bewoners, opgezet en geleid door Moniek Zondag.",
-    email: "info@a-kracht.nl",
-    telephone: "+31600000000",
+    "@id": `${s.url}#organization`,
+    name: s.name,
+    url: s.url,
+    logo: `${s.url}/favicon.ico`,
+    description: s.description,
+    email: s.email,
+    telephone: s.phone,
     address: {
       "@type": "PostalAddress",
-      addressLocality: "Delfgauw",
-      addressRegion: "Zuid-Holland",
-      addressCountry: "NL",
+      addressLocality: s.locality,
+      addressRegion: s.region,
+      addressCountry: s.country,
     },
     areaServed: {
       "@type": "Place",
-      name: "Delfgauw en omgeving",
+      name: `${s.locality} en omgeving`,
     },
     founder: {
       "@type": "Person",
-      name: "Moniek Zondag",
-      url: "https://a-kracht.nl/over",
+      name: content.over.name,
+      url: `${s.url}/over`,
     },
     parentOrganization: {
       "@type": "Organization",
-      name: "Coöperatie de Delta",
+      name: s.parentOrganization,
     },
     knowsAbout: [
       "autisme",
@@ -61,7 +66,7 @@ export default function Home() {
   return (
     <>
       <JsonLd data={jsonLd} />
-      <HomePage />
+      <HomePage content={content.home} />
     </>
   );
 }

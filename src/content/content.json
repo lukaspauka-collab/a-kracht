@@ -1,0 +1,667 @@
+{
+  "site": {
+    "name": "A-Kracht begeleiding",
+    "url": "https://a-kracht.nl",
+    "description": "Kleinschalige 24-uurszorg en overbruggingszorg voor mensen met autisme in Delfgauw. Een huis voor negen bewoners, begeleid door Moniek Zondag.",
+    "email": "info@a-kracht.nl",
+    "phone": "+31600000000",
+    "phoneDisplay": "06 – 00 00 00 00",
+    "locality": "Delfgauw",
+    "region": "Zuid-Holland",
+    "country": "NL",
+    "parentOrganization": "Coöperatie de Delta",
+    "copyrightYear": "2026",
+    "footerTagline": "Kleinschalige 24-uurszorg en overbruggingszorg voor mensen met autisme in Delfgauw.",
+    "headerCta": "Kennismaken",
+    "nav": [
+      {
+        "label": "Home",
+        "href": "/"
+      },
+      {
+        "label": "Over mij",
+        "href": "/over"
+      },
+      {
+        "label": "Diensten",
+        "href": "/diensten"
+      },
+      {
+        "label": "Over de organisatie",
+        "href": "/organisatie"
+      },
+      {
+        "label": "Contact",
+        "href": "/contact"
+      }
+    ]
+  },
+  "home": {
+    "heroEyebrow": "Delfgauw · 24-uurszorg",
+    "heroTitle": "Kleinschalige,\n**veilige** begeleiding\nbij autisme",
+    "heroLead": "Een klein, huiselijk huis voor negen bewoners. Geen instelling, maar rust, ritme en mensen die je kennen. Opgezet en geleid door Moniek Zondag, gespecialiseerd in autisme en comorbiditeit.",
+    "heroCtaPrimary": "Plan een kennismaking",
+    "heroCtaPrimaryHref": "/contact",
+    "heroCtaSecondary": "Bekijk het aanbod",
+    "heroCtaSecondaryHref": "/diensten",
+    "heroImage": {
+      "src": "/images/huis-tuin.jpg",
+      "placeholder": "Foto van het huis of de tuin"
+    },
+    "stats": [
+      {
+        "value": "9",
+        "label": "bewoners"
+      },
+      {
+        "value": "22",
+        "label": "jaar in de zorg"
+      },
+      {
+        "value": "24/7",
+        "label": "aanwezige begeleiding"
+      },
+      {
+        "value": "Coöperatie de Delta",
+        "label": "onderdeel van"
+      }
+    ],
+    "quoteText": "Ieder mens heeft eigen kracht. Mijn werk is die kracht ruimte geven — in een omgeving die voorspelbaar, veilig en gewoon prettig is.",
+    "quoteAuthor": "Moniek Zondag · oprichter",
+    "coreEyebrow": "Kernwaarden",
+    "coreTitle": "Waar wij elke dag op terugvallen",
+    "core": [
+      {
+        "sw": "sw-sage",
+        "title": "Veiligheid",
+        "text": "Voorspelbare dagen, duidelijke afspraken en een team dat je door en door kent."
+      },
+      {
+        "sw": "sw-clay",
+        "title": "Kleinschaligheid",
+        "text": "Negen bewoners, één vast team. Geen wisselende gezichten, geen wachtrijen."
+      },
+      {
+        "sw": "sw-blue",
+        "title": "Eigen regie",
+        "text": "Jij bepaalt het tempo. Wij ondersteunen waar het nodig is, en stappen terug waar het kan."
+      },
+      {
+        "sw": "sw-sage",
+        "title": "Echt contact",
+        "text": "Zorg is mensenwerk. We zijn eerlijk, gewoon en dichtbij — ook op moeilijke dagen."
+      }
+    ],
+    "offerEyebrow": "Aanbod",
+    "offerTitle": "Wat wij bieden",
+    "offerLinkLabel": "Alle diensten",
+    "offer": [
+      {
+        "n": "01",
+        "title": "24-uurszorg",
+        "text": "Wonen met begeleiding die dag en nacht aanwezig is, in een huiselijke setting."
+      },
+      {
+        "n": "02",
+        "title": "Overbruggingszorg",
+        "text": "Tijdelijke plek en begeleiding in de periode tot een definitieve woonplek."
+      },
+      {
+        "n": "03",
+        "title": "Ambulante begeleiding",
+        "text": "Ondersteuning bij jou thuis: structuur, administratie, dagritme en contact."
+      }
+    ],
+    "dayEyebrow": "Een gewone dag",
+    "dayTitle": "Ritme geeft rust",
+    "dayIntro": "De dag heeft een vaste vorm, maar geen dwang. Wie een moeilijke ochtend heeft, mag die hebben. Wie liever op de eigen kamer eet, eet op de eigen kamer.",
+    "day": [
+      {
+        "time": "07:30",
+        "strong": "Opstaan in eigen tempo.",
+        "text": " Begeleiding loopt langs, ontbijt staat klaar."
+      },
+      {
+        "time": "09:30",
+        "strong": "Werk, school of dagbesteding.",
+        "text": " Wie thuis is, pakt iets in en om het huis op."
+      },
+      {
+        "time": "17:30",
+        "strong": "Samen eten.",
+        "text": " Aanschuiven mag, alleen eten mag ook."
+      },
+      {
+        "time": "22:00",
+        "strong": "Rust in huis.",
+        "text": " 's Nachts is er altijd een begeleider aanwezig."
+      }
+    ],
+    "galleryMain": {
+      "src": "/images/woonkamer.jpg",
+      "placeholder": "Woonkamer of gevel van het huis"
+    },
+    "gallerySide1": {
+      "src": "/images/tuin.jpg",
+      "placeholder": "Detail: tuin, keuken"
+    },
+    "gallerySide2": {
+      "src": "/images/kamer.jpg",
+      "placeholder": "Detail: eigen kamer"
+    },
+    "galleryCaption": "Het huis in Delfgauw — negen eigen kamers, gedeelde woonkamer en tuin.",
+    "audienceTitle": "Voor wie is dit huis?",
+    "audienceLead": "Eerlijk zijn over wat wel en niet past voorkomt teleurstelling — voor jou en voor ons.",
+    "audienceYesTitle": "Dit past goed",
+    "audienceYes": [
+      "Volwassenen met een autismespectrumstoornis",
+      "Behoefte aan een prikkelarme, kleine woonomgeving",
+      "Een Wlz-indicatie, Wmo-beschikking of PGB",
+      "Willen werken aan zelfstandigheid, in eigen tempo"
+    ],
+    "audienceNoTitle": "Dit past minder goed",
+    "audienceNo": [
+      "Acute crisiszorg of gesloten opname",
+      "Actieve verslavingsproblematiek op de voorgrond",
+      "Zorg waarbij structureel twee begeleiders nodig zijn",
+      "Intensieve verpleegkundige of somatische zorg"
+    ],
+    "deltaTitle": "Onderdeel van Coöperatie de Delta",
+    "deltaText": "A-Kracht begeleiding werkt zelfstandig, maar niet alleen. Binnen de coöperatie delen kleine zorgaanbieders kennis, achterwacht en kwaliteitstoetsing.",
+    "deltaCta": "Neem contact op"
+  },
+  "over": {
+    "eyebrow": "Over mij",
+    "name": "Moniek Zondag",
+    "quote": "Ik wilde zorg maken die ik zelf zou willen krijgen.",
+    "linkedinHref": "https://www.linkedin.com/in/moniek-zondag-a7a79542/",
+    "linkedinLabel": "Bekijk mijn LinkedIn-profiel",
+    "portrait": {
+      "src": "/images/portret-moniek.jpg",
+      "placeholder": "Portretfoto Moniek"
+    },
+    "intro1": "Ik werk ruim twintig jaar in de zorg voor mensen met autisme. In die jaren zag ik hoe vaak het misgaat op dezelfde plekken: te grote groepen, te veel wisselingen, te weinig tijd om iemand echt te leren kennen.",
+    "intro2": "A-Kracht begeleiding is mijn antwoord daarop. Een klein huis, een vast team en de ruimte om te doen wat nodig is — niet wat het rooster toelaat.",
+    "intro3": "Ik heb me daarin blijven specialiseren: als autisme-deskundige en -specialist bij de RINO Groep, gericht op autisme met comorbiditeit. In de praktijk betekent dat: samen uitzoeken hoe jij je autisme herkent, wat je helpt en wat juist niet.",
+    "timelineTitle": "Mijn weg hierheen",
+    "timeline": [
+      {
+        "year": "2003",
+        "strong": "Eerste stap in de zorg.",
+        "text": " Begonnen in een begeleid woonproject voor mensen met een licht verstandelijke beperking en onder meer autisme."
+      },
+      {
+        "year": "2006",
+        "strong": "Diploma SPH.",
+        "text": " Sociaal Pedagogische Hulpverlening afgerond aan de Hogeschool van Arnhem en Nijmegen."
+      },
+      {
+        "year": "2010",
+        "strong": "Naar de GGZ.",
+        "text": " Werken met complexere zorgvragen en gedwongen kaders, en steeds meer volwassenen met autisme."
+      },
+      {
+        "year": "14,5 jaar",
+        "strong": "Vaste grond.",
+        "text": " Het autisme-team van RIBW K/AM: beschermd wonen én ambulante ondersteuning voor mensen met autisme."
+      },
+      {
+        "year": "2014–2022",
+        "strong": "Autisme-consulent.",
+        "text": " Naast het team: bij het Regionaal Autisme Centrum Zuid-Kennemerland mensen met autisme en hun omgeving op weg helpen naar passende ondersteuning."
+      },
+      {
+        "year": "2021–2023",
+        "strong": "Specialisatie.",
+        "text": " Autisme-deskundige en -specialist via de RINO Groep, gericht op autisme en comorbiditeit."
+      },
+      {
+        "year": "2023–2025",
+        "strong": "Delen wat ik weet.",
+        "text": " Samen met ervaringsdeskundigen de basis-cursus autisme gegeven binnen RIBW K/AM."
+      },
+      {
+        "year": "2025",
+        "strong": "A-Kracht begeleiding.",
+        "text": " Zelfstandig verder, aangesloten bij Coöperatie de Delta.",
+        "accent": true
+      }
+    ],
+    "missionTitle": "Missie",
+    "missionText": "Een plek bieden waar mensen met autisme veilig kunnen wonen en zichzelf mogen zijn, met begeleiding die meebeweegt met wat iemand op dat moment aankan.",
+    "visionTitle": "Visie",
+    "visionText": "Goede zorg is klein, langdurig en persoonlijk. Vertrouwen groeit in de tijd — daarom bouwen we op vaste gezichten in plaats van op protocollen.",
+    "focusTitle": "Waar ik me op richt",
+    "focusLead": "In de loop van de jaren is mijn werk zich steeds meer gaan richten op volwassenen met autisme én bijkomende problematiek. Drie dingen die daarin centraal staan.",
+    "focus": [
+      {
+        "n": "01",
+        "title": "Autisme en comorbiditeit",
+        "text": "De laatste jaren begeleid ik vooral volwassenen met autisme en bijkomende problematiek, zoals angst, stemmingsklachten of trauma. Autisme staat bijna nooit alleen."
+      },
+      {
+        "n": "02",
+        "title": "Vitaal versterkend werken",
+        "text": "We versterken veerkracht, leren verbanden zien en zoeken naar een betekenisvolle daginvulling. Kwetsbaarheden ondersteunen en wat goed gaat, versterken."
+      },
+      {
+        "n": "03",
+        "title": "Leren en delen",
+        "text": "Samen met ervaringsdeskundigen gaf ik jarenlang de basis-cursus autisme. En als collega's vastlopen in complexe situaties, denk ik graag mee."
+      }
+    ],
+    "methodTitle": "Hoe ik werk",
+    "methodLead": "Geen standaardaanpak, wel een vaste manier van beginnen: eerst kijken en luisteren, dan pas doen.",
+    "method": [
+      {
+        "n": "01",
+        "title": "Leren kennen",
+        "text": "Ik neem de tijd voordat er doelen op papier staan. Wat werkt bij jou, en wat juist niet?"
+      },
+      {
+        "n": "02",
+        "title": "Klein beginnen",
+        "text": "Eén ding tegelijk, in stappen die haalbaar zijn. Liever langzaam vooruit dan snel terug."
+      },
+      {
+        "n": "03",
+        "title": "Bijstellen",
+        "text": "Elk half jaar samen evalueren — en tussendoor gewoon, wanneer het nodig is."
+      }
+    ],
+    "educationTitle": "Opleiding & registratie",
+    "education": [
+      {
+        "label": "SPW, ROC Nijmegen",
+        "meta": "2001"
+      },
+      {
+        "label": "HBO Sociaal Pedagogische Hulpverlening, HAN",
+        "meta": "2005"
+      },
+      {
+        "label": "Autisme-deskundige, RINO Groep",
+        "meta": "2021"
+      },
+      {
+        "label": "Autisme-specialist — autisme & comorbiditeit, RINO Groep",
+        "meta": "2023"
+      },
+      {
+        "label": "Registratie SKJ / Registerplein",
+        "meta": "actief"
+      },
+      {
+        "label": "VOG en aansluiting klachtenregeling",
+        "meta": "via de Delta"
+      }
+    ],
+    "practiceTitle": "Kernwaarden in de praktijk",
+    "practice": [
+      {
+        "border": "var(--sage)",
+        "title": "Veiligheid",
+        "text": "Vaste dagstructuur, aangekondigde veranderingen en een prikkelarme inrichting van het huis."
+      },
+      {
+        "border": "var(--clay)",
+        "title": "Kleinschaligheid",
+        "text": "Negen bewoners betekent: tijd voor een gesprek, en iemand die merkt dat het niet lekker gaat."
+      },
+      {
+        "border": "var(--blue)",
+        "title": "Eigen regie",
+        "text": "Doelen worden samen bepaald en regelmatig bijgesteld — geen plan dat een jaar in een la ligt."
+      },
+      {
+        "border": "var(--sage)",
+        "title": "Echt contact",
+        "text": "Naast elkaar staan in plaats van tegenover elkaar, ook wanneer het even schuurt."
+      }
+    ]
+  },
+  "diensten": {
+    "eyebrow": "Diensten",
+    "title": "Zorg die past bij hoe jij leeft",
+    "lead": "Van volledig wonen met 24-uurs begeleiding tot een paar uur ondersteuning per week. We kijken eerst wat er nodig is, daarna pas naar de vorm.",
+    "services": [
+      {
+        "sw": "sw-sage",
+        "title": "24-uurszorg",
+        "text": "Wonen in het huis met altijd begeleiding aanwezig."
+      },
+      {
+        "sw": "sw-clay",
+        "title": "Overbruggingszorg",
+        "text": "Een veilige tussenstap tot de definitieve woonplek er is."
+      },
+      {
+        "sw": "sw-blue",
+        "title": "Ambulante begeleiding",
+        "text": "Ondersteuning bij jou thuis, in jouw eigen ritme."
+      },
+      {
+        "sw": "sw-sage",
+        "title": "Dagstructuur",
+        "text": "Samen een dag opbouwen die haalbaar is en houvast geeft."
+      },
+      {
+        "sw": "sw-clay",
+        "title": "Administratie & financiën",
+        "text": "Post, regelzaken en instanties — stap voor stap, samen."
+      },
+      {
+        "sw": "sw-blue",
+        "title": "Netwerk & familie",
+        "text": "Korte lijnen met naasten, met respect voor ieders rol."
+      },
+      {
+        "sw": "sw-sage",
+        "title": "Werk & dagbesteding",
+        "text": "Zoeken naar een plek die energie geeft in plaats van kost."
+      },
+      {
+        "sw": "sw-clay",
+        "title": "Crisispreventie",
+        "text": "Signalen vroeg herkennen en een plan dat klaarligt."
+      }
+    ],
+    "explainEyebrow": "Toelichting",
+    "explainTitle": "Wat is overbruggingszorg precies?",
+    "explainP1": "Wachten op een woonplek duurt vaak lang. Overbruggingszorg vangt die periode op: je krijgt een tijdelijke plek of begeleiding thuis, zodat de situatie niet verder vastloopt.",
+    "explainP2": "We stemmen af met de toekomstige woonplek, zodat de overstap straks zo rustig mogelijk verloopt.",
+    "stepsTitle": "Zo verloopt een aanmelding",
+    "stepsLead": "Vier stappen, zonder wachtkamergevoel. Je hoort altijd waar je aan toe bent — ook als het antwoord nee is.",
+    "steps": [
+      {
+        "n": "Stap 1",
+        "title": "Kennismaken",
+        "text": "Een gesprek zonder verplichtingen, thuis of in het huis."
+      },
+      {
+        "n": "Stap 2",
+        "title": "Beeld vormen",
+        "text": "We kijken samen naar de zorgvraag, indicatie en wat past."
+      },
+      {
+        "n": "Stap 3",
+        "title": "Proefperiode",
+        "text": "Meelopen en logeren, zodat het klikken van twee kanten komt."
+      },
+      {
+        "n": "Stap 4",
+        "title": "Start",
+        "text": "Zorgplan, vaste contactpersoon en een rustige verhuizing."
+      }
+    ],
+    "fundingEyebrow": "Financiering",
+    "fundingTitle": "Wie betaalt de zorg?",
+    "fundingLead": "Weet je niet welke route voor jou geldt? Bel gerust — we zoeken het samen uit en denken mee met de aanvraag.",
+    "funding": [
+      {
+        "title": "Wlz",
+        "text": "Langdurige zorg met verblijf, via het CIZ."
+      },
+      {
+        "title": "Wmo",
+        "text": "Begeleiding thuis, via de gemeente Pijnacker-Nootdorp."
+      },
+      {
+        "title": "PGB",
+        "text": "Zelf regie over het budget en de invulling van de zorg."
+      },
+      {
+        "title": "Zorg in natura",
+        "text": "Via de contracten van Coöperatie de Delta."
+      }
+    ],
+    "ctaTitle": "Niet zeker welke vorm past? Bel gerust — we denken vrijblijvend mee.",
+    "ctaLabel": "Stel je vraag",
+    "ctaHref": "/contact"
+  },
+  "organisatie": {
+    "eyebrow": "Over de organisatie",
+    "title": "Zorg met heldere afspraken",
+    "lead": "Wie verantwoordelijk is voor de zorg, hoe wij kwaliteit bewaken en waar je terecht kunt met vragen, klachten en privacyzaken.",
+    "whoEyebrow": "Wie zijn wij",
+    "whoTitle": "Een kleine woonzorglocatie, onderdeel van Coöperatie de Delta",
+    "whoP1": "A-Kracht begeleiding is een kleinschalige woonzorglocatie in Delfgauw voor volwassenen met autisme. De zorg wordt aangeboden onder verantwoordelijkheid van Coöperatie de Delta, waarbij de bewoners als cliënt zijn ingeschreven.",
+    "whoP2": "Het huis heeft negen plekken en wordt opgezet en geleid door Moniek Zondag. Binnen de coöperatie delen kleine zorgaanbieders kennis, achterwacht en kwaliteitstoetsing.",
+    "whoLinkLabel": "Meer over Coöperatie de Delta",
+    "whoLinkHref": "https://www.cooperatiededelta.nl",
+    "dataEyebrow": "Contact & organisatie",
+    "dataTitle": "Gegevens van de locatie",
+    "dataLead": "Alle formele gegevens op een rij. Vragen over de zorgverlening stellen kan altijd via de contactpagina.",
+    "dataRows": [
+      {
+        "label": "Vestigingsadres",
+        "value": "Delfgauw, Zuid-Holland"
+      },
+      {
+        "label": "Telefoon",
+        "value": "06 – 00 00 00 00"
+      },
+      {
+        "label": "E-mailadres",
+        "value": "info@a-kracht.nl"
+      },
+      {
+        "label": "KvK-nummer",
+        "value": "00 0000 0000"
+      },
+      {
+        "label": "AGB-code",
+        "value": "Via Coöperatie de Delta"
+      },
+      {
+        "label": "Verantwoordelijk voor de zorg",
+        "value": "Coöperatie de Delta"
+      }
+    ],
+    "offerEyebrow": "Zorgaanbod & doelgroep",
+    "offerTitle": "Voor wie en welke zorg",
+    "offerLinkLabel": "Bekijk ons aanbod",
+    "offer": [
+      {
+        "border": "var(--sage)",
+        "title": "Wonen",
+        "text": "Wonen in het huis in Delfgauw, met eigen kamers en gedeelde woonkamer en tuin."
+      },
+      {
+        "border": "var(--clay)",
+        "title": "Begeleiding",
+        "text": "Dag en nacht begeleiding door een vast team dat de bewoners door en door kent."
+      },
+      {
+        "border": "var(--blue)",
+        "title": "Dagbesteding",
+        "text": "Werk, school of dagbesteding — binnen en buiten het huis, passend bij ieder persoon."
+      },
+      {
+        "border": "var(--sage)",
+        "title": "Wlz / VG-profiel",
+        "text": "Zorg vanuit de Wlz (VG), met indicaties en profielen die passen bij een kleinschalige woonlocatie."
+      }
+    ],
+    "qualityEyebrow": "Kwaliteit & veiligheid",
+    "qualityTitle": "Kwaliteit is een wettelijke plicht — en vanzelfsprekend",
+    "qualityLead": "De Wet kwaliteit, klachten en geschillen zorg (Wkkgz) verplicht zorgaanbieders hun kwaliteit te bewaken, beheersen en verbeteren. Dat doen we op vier vaste manieren.",
+    "quality": [
+      {
+        "n": "01",
+        "title": "Zorgplannen",
+        "text": "Iedere bewoner heeft een eigen plan dat samen wordt opgesteld en regelmatig wordt geëvalueerd."
+      },
+      {
+        "n": "02",
+        "title": "Deskundig personeel",
+        "text": "Vaste, geschoolde begeleiders met een SKJ-registratie en doorlopende scholing."
+      },
+      {
+        "n": "03",
+        "title": "Incidenten & verbetering",
+        "text": "We registreren en bespreken incidenten en gebruiken ze om de zorg te verbeteren."
+      },
+      {
+        "n": "04",
+        "title": "Medicatieveiligheid",
+        "text": "Vaste afspraken voor toediening, controle en overdracht van medicatie."
+      }
+    ],
+    "complaintEyebrow": "Klachten & geschillen",
+    "complaintTitle": "Klachtenfunctionaris",
+    "complaintP1": "De zorgverlening aan onze bewoners vindt plaats onder verantwoordelijkheid van Coöperatie de Delta. Voor klachten over de zorgverlening geldt de klachtenregeling van de coöperatie. Daar vind je ook de onafhankelijke klachtenfunctionaris en het telefoonnummer.",
+    "complaintP2": "Liever eerst even praten? Neem dan contact op met Moniek of de zorgverlener — samen komen we het vaakst verder.",
+    "complaintCtaLabel": "Naar de klachtenregeling",
+    "complaintCtaHref": "https://www.cooperatiededelta.nl/klachtenregeling",
+    "applyTitle": "Wil je aanmelden?",
+    "applyText": "Aanmelden kan via het aanmeldformulier van Coöperatie de Delta of via ons contactformulier. We kijken samen wat er nodig is.",
+    "applyCtaLabel": "Contactformulier",
+    "applyCtaHref": "/contact",
+    "applyCta2Label": "Aanmeldformulier Delta",
+    "applyCta2Href": "https://www.cooperatiededelta.nl",
+    "councilEyebrow": "Medezeggenschap",
+    "councilTitle": "De cliëntenraad",
+    "councilP1": "De cliëntenraad vertegenwoordigt de belangen van bewoners en cliënten binnen onze kleinschalige zorginstelling. Wij zetten ons in voor persoonlijke, respectvolle en kwalitatief goede zorg, waarbij de stem van cliënten en hun naasten centraal staat.",
+    "councilP2": "Binnen onze organisatie vinden wij het belangrijk dat iedereen zich gehoord voelt. De cliëntenraad speelt hierin een actieve rol. Wij denken en praten mee over beleid, kwaliteit van zorg, veiligheid, welzijn en de dagelijkse gang van zaken.",
+    "councilP3": "We geloven in de kracht van verbinding tussen bewoners, zorgprofessionals en ouders. We doen het samen. Inclusie, veiligheid, respect, verbinding en empowerment zijn belangrijke waarden in onze visie.",
+    "councilTasksTitle": "De cliëntenraad:",
+    "councilTasks": [
+      "Behartigt de gemeenschappelijke belangen van cliënten",
+      "Overlegt regelmatig met de directie en het management",
+      "Geeft advies over beleidsvoornemens en belangrijke ontwikkelingen",
+      "Signaleert knelpunten en draagt verbeterpunten aan",
+      "Stimuleert inspraak en betrokkenheid van cliënten en hun vertegenwoordigers"
+    ],
+    "councilNote": "Bij bepaalde besluiten heeft de cliëntenraad advies- of instemmingsrecht, conform de geldende wet- en regelgeving.",
+    "commissionsTitle": "Commissies",
+    "commissionsLead": "Vier commissies, waarin naasten actief meedenken over de dagelijkse zorg en de richting van de organisatie.",
+    "commissions": [
+      {
+        "sw": "sw-sage",
+        "title": "Commissie Gezond Leven, Bewegen en Goede Voeding",
+        "text": "Richt zich op een gezonde leefstijl: gezonde en gevarieerde voeding, voldoende beweging, preventie en vitaliteit. De commissie denkt mee over verbeteringen en bewaakt dat gezond leven structureel aandacht krijgt.",
+        "list": [
+          "Gezonde en gevarieerde voeding",
+          "Voldoende beweging en passende activiteiten",
+          "Preventie en vitaliteit",
+          "Bewustwording rondom gezondheid en welzijn"
+        ]
+      },
+      {
+        "sw": "sw-clay",
+        "title": "Commissie Werving & Selectie",
+        "text": "Goede zorg begint bij betrokken en deskundige medewerkers. Door actieve betrokkenheid van ouders wordt bij nieuwe medewerkers nadrukkelijk gekeken naar cliëntgerichtheid en aansluiting bij de waarden van onze organisatie.",
+        "list": [
+          "Denkt mee over profielen en functie-eisen",
+          "Neemt, waar passend, deel aan sollicitatieprocedures",
+          "Let op cliëntgerichtheid en passende houding van nieuwe medewerkers",
+          "Adviseert over benoemingen in sleutelposities"
+        ]
+      },
+      {
+        "sw": "sw-blue",
+        "title": "Commissie Activiteiten",
+        "text": "Welzijn is meer dan alleen zorg. Ouders leveren waardevolle input vanuit hun dagelijkse ervaring en kennis van hun kind.",
+        "list": [
+          "Dagbesteding en recreatieve activiteiten",
+          "Aansluiting bij wensen en mogelijkheden van cliënten",
+          "Betrokkenheid van vrijwilligers en familie",
+          "Evaluatie en verbetering van het activiteitenaanbod"
+        ]
+      },
+      {
+        "sw": "sw-sage",
+        "title": "Kwaliteit van Zorg en Dienstverlening",
+        "text": "De cliëntenraad volgt en bespreekt structureel de kwaliteit van zorg en dienstverlening. Ook hier spelen ouders een actieve rol in het signaleren van aandachtspunten en het meedenken over verbeteringen.",
+        "list": [
+          "Tevredenheid van cliënten",
+          "Veiligheid en zorgprocessen",
+          "Klachten en verbetermaatregelen",
+          "Continuïteit en deskundigheid van zorg"
+        ]
+      }
+    ],
+    "privacyEyebrow": "Privacy",
+    "privacyTitle": "Privacyverklaring",
+    "privacyP1": "De zorgverlening aan onze bewoners vindt plaats onder verantwoordelijkheid van Coöperatie de Delta. Voor de verwerking van persoonsgegevens in het kader van de zorgverlening geldt de privacyverklaring van Coöperatie de Delta.",
+    "privacyLinkLabel": "privacyverklaring van Coöperatie de Delta",
+    "privacyLinkHref": "https://www.cooperatiededelta.nl",
+    "privacyP2": "A-Kracht verwerkt daarnaast persoonsgegevens voor zover dit noodzakelijk is voor de eigen bedrijfsvoering. Voor deze verwerkingen geldt de privacyverklaring van A-Kracht, op te vragen via info@a-kracht.nl."
+  },
+  "contact": {
+    "eyebrow": "Contact",
+    "title": "Even kennismaken?",
+    "lead": "Laat een bericht achter of bel. Je krijgt altijd Moniek zelf aan de lijn — meestal binnen twee werkdagen.",
+    "formNameLabel": "Naam",
+    "formEmailLabel": "E-mailadres",
+    "formPhoneLabel": "Telefoon",
+    "formPhoneOptional": "(optioneel)",
+    "formMessageLabel": "Bericht",
+    "formSubmit": "Verstuur bericht",
+    "formSuccess": "Bedankt — je bericht is verstuurd.",
+    "infoTitle": "Contactgegevens",
+    "infoRows": [
+      {
+        "sw": "sw-sage",
+        "color": "var(--sage-strong)",
+        "glyph": "✉",
+        "label": "E-mail",
+        "value": "info@a-kracht.nl",
+        "href": "mailto:info@a-kracht.nl"
+      },
+      {
+        "sw": "sw-clay",
+        "color": "var(--clay)",
+        "glyph": "☎",
+        "label": "Telefoon",
+        "value": "06 – 00 00 00 00",
+        "href": "tel:+31600000000"
+      },
+      {
+        "sw": "sw-sage",
+        "color": "var(--sage-strong)",
+        "glyph": "◷",
+        "label": "Bereikbaar",
+        "value": "Ma t/m vr, 09:00 – 17:00",
+        "href": ""
+      },
+      {
+        "sw": "sw-blue",
+        "color": "var(--blue-ink)",
+        "glyph": "⌂",
+        "label": "Locatie",
+        "value": "Delfgauw, Zuid-Holland",
+        "href": ""
+      }
+    ],
+    "streetImage": {
+      "src": "/images/straatbeeld.jpg",
+      "placeholder": "Kaart of straatbeeld Delfgauw"
+    },
+    "deltaBadgeGlyph": "dD",
+    "deltaTitle": "Coöperatie de Delta",
+    "deltaText": "A-Kracht begeleiding is aangesloten bij de coöperatie. Vragen over kwaliteit, klachten of samenwerking lopen ook via de Delta.",
+    "faqEyebrow": "Veelgestelde vragen",
+    "faqTitle": "Voordat je belt",
+    "faqLead": "Staat jouw vraag er niet bij? Stel hem gerust — geen vraag is te klein.",
+    "faq": [
+      {
+        "q": "Is er nu plek?",
+        "a": "Het huis heeft negen plekken. Is alles bezet, dan kijken we naar overbruggingszorg of begeleiding thuis tot er ruimte is."
+      },
+      {
+        "q": "Heb ik een indicatie nodig?",
+        "a": "Voor wonen wel. Heb je die nog niet, dan helpen we bij de aanvraag bij het CIZ of de gemeente."
+      },
+      {
+        "q": "Kan familie langskomen?",
+        "a": "Ja, in overleg met de bewoner. We houden korte lijnen met naasten, met respect voor ieders privacy."
+      },
+      {
+        "q": "Waar kan ik een klacht melden?",
+        "a": "Eerst bij Moniek zelf. Kom je er samen niet uit, dan loopt het via de onafhankelijke klachtenregeling van Coöperatie de Delta."
+      }
+    ]
+  }
+}
