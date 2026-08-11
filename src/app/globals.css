@@ -476,12 +476,17 @@ main {
 }
 
 /* ---------- scroll reveal ---------- */
-[data-reveal] {
-  opacity: 0;
-  transform: translateY(22px);
-  transition: opacity 700ms cubic-bezier(0.22, 0.61, 0.36, 1),
-    transform 700ms cubic-bezier(0.22, 0.61, 0.36, 1);
-  will-change: opacity, transform;
+/* The hidden state is gated behind `scripting: enabled` so content stays
+   fully visible for no-JS visitors and crawlers/AI indexers that don't run
+   JavaScript. Browsers with scripting get the fade + rise animation. */
+@media (scripting: enabled) {
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(22px);
+    transition: opacity 700ms cubic-bezier(0.22, 0.61, 0.36, 1),
+      transform 700ms cubic-bezier(0.22, 0.61, 0.36, 1);
+    will-change: opacity, transform;
+  }
 }
 [data-reveal].is-visible {
   opacity: 1;
@@ -511,9 +516,23 @@ main {
   .hero-title {
     font-size: 52px !important;
   }
+  /* keep the full nav comfortable when the viewport is narrow */
+  .brand-name {
+    font-size: 20px;
+  }
+  .nav-link {
+    padding: 7px 8px;
+    font-size: 14px;
+  }
+  .nav .nav-cta {
+    margin-left: 8px;
+    padding: 8px 12px;
+    font-size: 13.5px;
+  }
 }
 
-/* Tablet portrait / landscape: splits stack, 2- and 3-up stay 2-up */
+/* Tablet portrait / landscape: splits stack, 2- and 3-up stay 2-up,
+   and navigation switches to the hamburger menu below 900px */
 @media (max-width: 900px) {
   .split,
   .hero-grid {
@@ -532,20 +551,6 @@ main {
   .hero-title {
     font-size: 46px !important;
   }
-  /* keep the full nav comfortable at tablet widths */
-  .nav-link {
-    padding: 8px 10px;
-    font-size: 14.5px;
-  }
-  .nav .nav-cta {
-    margin-left: 10px;
-    padding: 9px 16px;
-    font-size: 14px;
-  }
-}
-
-/* Small tablets / large phones: switch to hamburger navigation */
-@media (max-width: 820px) {
   .nav {
     display: none !important;
   }

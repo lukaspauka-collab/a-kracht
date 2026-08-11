@@ -1,24 +1,15 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-import { NAV_ITEMS, type NavigateFn, type Page } from "./site";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { NAV_ITEMS } from "./site";
 
-export default function SiteHeader({
-  page,
-  navigate,
-}: {
-  page: Page;
-  navigate: NavigateFn;
-}) {
+export default function SiteHeader() {
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
 
   const close = useCallback(() => setOpen(false), []);
-
-  const go = (target: Page) => (e: React.MouseEvent) => {
-    e.preventDefault();
-    navigate(target);
-    close();
-  };
 
   // Close the mobile menu on Escape.
   useEffect(() => {
@@ -33,38 +24,36 @@ export default function SiteHeader({
   return (
     <header className="header">
       <div className="header-inner">
-        <a href="#" onClick={go("home")} className="brand">
+        <Link href="/" className="brand" onClick={close}>
           <span className="brand-name">A-Kracht begeleiding</span>
           <span className="brand-dot" />
-        </a>
+        </Link>
         <nav aria-label="Hoofdnavigatie" className="nav">
           {NAV_ITEMS.map((item) => (
-            <a
+            <Link
               key={item.key}
-              href="#"
-              onClick={go(item.key)}
-              aria-current={page === item.key ? "page" : undefined}
-              className={`nav-link${page === item.key ? " is-active" : ""}`}
+              href={item.href}
+              aria-current={pathname === item.href ? "page" : undefined}
+              className={`nav-link${pathname === item.href ? " is-active" : ""}`}
             >
               {item.label}
-            </a>
+            </Link>
           ))}
-          <a
-            href="#"
-            onClick={go("contact")}
+          <Link
+            href="/contact"
             className="btn btn--primary btn--sm nav-cta"
           >
             Kennismaken
-          </a>
+          </Link>
         </nav>
         <div className="header-actions">
-          <a
-            href="#"
-            onClick={go("contact")}
+          <Link
+            href="/contact"
+            onClick={close}
             className="btn btn--primary btn--sm header-cta"
           >
             Kennismaken
-          </a>
+          </Link>
           <button
             type="button"
             className={`menu-toggle${open ? " is-open" : ""}`}
@@ -86,26 +75,26 @@ export default function SiteHeader({
       >
         <div className="mobile-menu__list">
           {NAV_ITEMS.map((item) => (
-            <a
+            <Link
               key={item.key}
-              href="#"
-              onClick={go(item.key)}
-              aria-current={page === item.key ? "page" : undefined}
+              href={item.href}
+              onClick={close}
+              aria-current={pathname === item.href ? "page" : undefined}
               className={`mobile-menu__link${
-                page === item.key ? " is-active" : ""
+                pathname === item.href ? " is-active" : ""
               }`}
             >
               {item.label}
-            </a>
+            </Link>
           ))}
         </div>
-        <a
-          href="#"
-          onClick={go("contact")}
+        <Link
+          href="/contact"
+          onClick={close}
           className="btn btn--primary mobile-menu__cta"
         >
           Kennismaken
-        </a>
+        </Link>
       </nav>
     </header>
   );

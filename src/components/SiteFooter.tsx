@@ -1,11 +1,7 @@
-import type { NavigateFn, Page } from "./site";
+import Link from "next/link";
+import { NAV_ITEMS } from "./site";
 
-export default function SiteFooter({ navigate }: { navigate: NavigateFn }) {
-  const go = (target: Page) => (e: React.MouseEvent) => {
-    e.preventDefault();
-    navigate(target);
-  };
-
+export default function SiteFooter() {
   return (
     <footer className="footer">
       <div
@@ -52,23 +48,22 @@ export default function SiteFooter({ navigate }: { navigate: NavigateFn }) {
         <div>
           <p className="footer-heading">Pagina&apos;s</p>
           <div className="footer-list">
-            <a href="#" onClick={go("home")} className="footer-link">
-              Home
-            </a>
-            <a href="#" onClick={go("over")} className="footer-link">
-              Over mij
-            </a>
-            <a href="#" onClick={go("diensten")} className="footer-link">
-              Diensten
-            </a>
-            <a href="#" onClick={go("contact")} className="footer-link">
-              Contact
-            </a>
+            {NAV_ITEMS.map((item) => (
+              <Link key={item.key} href={item.href} className="footer-link">
+                {item.label}
+              </Link>
+            ))}
           </div>
         </div>
       </div>
       <div className="footer-bottom container">
         <span>© 2026 A-Kracht begeleiding</span>
+        <Link
+          href="/organisatie"
+          style={{ color: "var(--muted)", textDecoration: "none" }}
+        >
+          Privacy &amp; klachten
+        </Link>
         <span>Onderdeel van Coöperatie de Delta</span>
       </div>
     </footer>

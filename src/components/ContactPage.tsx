@@ -248,7 +248,10 @@ export default function ContactPage() {
                 border: "1px solid var(--border)",
               }}
             >
-              <ImageSlot placeholder="Kaart of straatbeeld Delfgauw" />
+              <ImageSlot
+                src="/images/straatbeeld.jpg"
+                placeholder="Kaart of straatbeeld Delfgauw"
+              />
             </div>
 
             <div

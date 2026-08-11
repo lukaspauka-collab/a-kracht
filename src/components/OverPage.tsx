@@ -4,28 +4,61 @@ const TIMELINE = [
   {
     year: "2003",
     strong: "Eerste stap in de zorg.",
-    text: " Begonnen als begeleider bij een woonvoorziening.",
+    text: " Begonnen in een begeleid woonproject voor mensen met een licht verstandelijke beperking en onder meer autisme.",
   },
   {
     year: "2006",
     strong: "Diploma SPH.",
-    text: " Sociaal Pedagogische Hulpverlening afgerond.",
+    text: " Sociaal Pedagogische Hulpverlening afgerond aan de Hogeschool van Arnhem en Nijmegen.",
   },
   {
     year: "2010",
     strong: "Naar de GGZ.",
-    text: " Werken met complexere zorgvragen en gedwongen kaders.",
+    text: " Werken met complexere zorgvragen en gedwongen kaders, en steeds meer volwassenen met autisme.",
   },
   {
     year: "14,5 jaar",
     strong: "Vaste grond.",
-    text: " Langdurig verbonden aan één team en één doelgroep.",
+    text: " Het autisme-team van RIBW K/AM: beschermd wonen én ambulante ondersteuning voor mensen met autisme.",
+  },
+  {
+    year: "2014–2022",
+    strong: "Autisme-consulent.",
+    text: " Naast het team: bij het Regionaal Autisme Centrum Zuid-Kennemerland mensen met autisme en hun omgeving op weg helpen naar passende ondersteuning.",
+  },
+  {
+    year: "2021–2023",
+    strong: "Specialisatie.",
+    text: " Autisme-deskundige en -specialist via de RINO Groep, gericht op autisme en comorbiditeit.",
+  },
+  {
+    year: "2023–2025",
+    strong: "Delen wat ik weet.",
+    text: " Samen met ervaringsdeskundigen de basis-cursus autisme gegeven binnen RIBW K/AM.",
   },
   {
     year: "2025",
     strong: "A-Kracht begeleiding.",
     text: " Zelfstandig verder, aangesloten bij Coöperatie de Delta.",
     accent: true,
+  },
+];
+
+const FOCUS = [
+  {
+    n: "01",
+    title: "Autisme en comorbiditeit",
+    text: "De laatste jaren begeleid ik vooral volwassenen met autisme en bijkomende problematiek, zoals angst, stemmingsklachten of trauma. Autisme staat bijna nooit alleen.",
+  },
+  {
+    n: "02",
+    title: "Vitaal versterkend werken",
+    text: "We versterken veerkracht, leren verbanden zien en zoeken naar een betekenisvolle daginvulling. Kwetsbaarheden ondersteunen en wat goed gaat, versterken.",
+  },
+  {
+    n: "03",
+    title: "Leren en delen",
+    text: "Samen met ervaringsdeskundigen gaf ik jarenlang de basis-cursus autisme. En als collega's vastlopen in complexe situaties, denk ik graag mee.",
   },
 ];
 
@@ -48,9 +81,11 @@ const METHOD = [
 ];
 
 const EDUCATION = [
-  ["HBO Sociaal Pedagogische Hulpverlening", "2006"],
+  ["SPW, ROC Nijmegen", "2001"],
+  ["HBO Sociaal Pedagogische Hulpverlening, HAN", "2005"],
+  ["Autisme-deskundige, RINO Groep", "2021"],
+  ["Autisme-specialist — autisme & comorbiditeit, RINO Groep", "2023"],
   ["Registratie SKJ / Registerplein", "actief"],
-  ["Scholing autisme & prikkelverwerking", "doorlopend"],
   ["VOG en aansluiting klachtenregeling", "via de Delta"],
 ];
 
@@ -104,6 +139,15 @@ export default function OverPage() {
           >
             &ldquo;Ik wilde zorg maken die ik zelf zou willen krijgen.&rdquo;
           </p>
+          <a
+            href="https://www.linkedin.com/in/moniek-zondag-a7a79542/"
+            target="_blank"
+            rel="noreferrer"
+            className="link-quiet"
+            style={{ marginTop: 26, display: "inline-block" }}
+          >
+            Bekijk mijn LinkedIn-profiel →
+          </a>
         </div>
       </section>
 
@@ -139,7 +183,10 @@ export default function OverPage() {
                 boxShadow: "0 16px 40px rgba(43,42,39,0.10)",
               }}
             >
-              <ImageSlot placeholder="Portretfoto Moniek" />
+              <ImageSlot
+                src="/images/portret-moniek.jpg"
+                placeholder="Portretfoto Moniek"
+              />
             </div>
           </div>
           <div>
@@ -161,12 +208,25 @@ export default function OverPage() {
                 fontSize: 17.5,
                 lineHeight: 1.8,
                 color: "var(--muted)",
-                margin: "0 0 42px",
+                margin: "0 0 20px",
               }}
             >
               A-Kracht begeleiding is mijn antwoord daarop. Een klein huis, een
               vast team en de ruimte om te doen wat nodig is — niet wat het
               rooster toelaat.
+            </p>
+            <p
+              style={{
+                fontSize: 17.5,
+                lineHeight: 1.8,
+                color: "var(--muted)",
+                margin: "0 0 42px",
+              }}
+            >
+              Ik heb me daarin blijven specialiseren: als autisme-deskundige en
+              -specialist bij de RINO Groep, gericht op autisme met
+              comorbiditeit. In de praktijk betekent dat: samen uitzoeken hoe
+              jij je autisme herkent, wat je helpt en wat juist niet.
             </p>
 
             <h2
@@ -282,6 +342,51 @@ export default function OverPage() {
               de tijd — daarom bouwen we op vaste gezichten in plaats van op
               protocollen.
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* waar ik me op richt */}
+      <section data-reveal style={{ padding: "88px 24px 0" }}>
+        <div className="container" style={{ padding: 0 }}>
+          <h2 className="section-title" style={{ fontSize: 32, margin: "0 0 18px" }}>
+            Waar ik me op richt
+          </h2>
+          <p
+            style={{
+              maxWidth: "60ch",
+              margin: "0 0 40px",
+              color: "var(--muted)",
+              lineHeight: 1.8,
+              fontSize: 16.5,
+            }}
+          >
+            In de loop van de jaren is mijn werk zich steeds meer gaan richten
+            op volwassenen met autisme én bijkomende problematiek. Drie dingen
+            die daarin centraal staan.
+          </p>
+          <div
+            className="grid-3"
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(3,1fr)",
+              gap: 22,
+            }}
+          >
+            {FOCUS.map((f) => (
+              <div key={f.n} className="card" style={{ padding: "30px 32px" }}>
+                <p
+                  className="serif"
+                  style={{ margin: "0 0 14px", fontSize: 15, color: "var(--clay)" }}
+                >
+                  {f.n}
+                </p>
+                <h3 className="card-title" style={{ fontSize: 19 }}>
+                  {f.title}
+                </h3>
+                <p className="card-text">{f.text}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
