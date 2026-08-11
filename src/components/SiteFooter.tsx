@@ -58,6 +58,12 @@ export default function SiteFooter() {
       </div>
       <div className="footer-bottom container">
         <span>© 2026 A-Kracht begeleiding</span>
+        <Link
+          href="/organisatie"
+          style={{ color: "var(--muted)", textDecoration: "none" }}
+        >
+          Privacy &amp; klachten
+        </Link>
         <span>Onderdeel van Coöperatie de Delta</span>
       </div>
     </footer>

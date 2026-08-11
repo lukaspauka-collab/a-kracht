@@ -1,4 +1,4 @@
-export type Page = "home" | "over" | "diensten" | "contact";
+export type Page = "home" | "over" | "diensten" | "organisatie" | "contact";
 
 export const SITE = {
   name: "A-Kracht begeleiding",
@@ -18,5 +18,6 @@ export const NAV_ITEMS: { key: Page; label: string; href: string }[] = [
   { key: "home", label: "Home", href: "/" },
   { key: "over", label: "Over mij", href: "/over" },
   { key: "diensten", label: "Diensten", href: "/diensten" },
+  { key: "organisatie", label: "Over de organisatie", href: "/organisatie" },
   { key: "contact", label: "Contact", href: "/contact" },
 ];
