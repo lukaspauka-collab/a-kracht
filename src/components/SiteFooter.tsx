@@ -71,6 +71,9 @@ export default function SiteFooter({
                 {item.label}
               </Link>
             ))}
+            <Link href="/privacy" className="footer-link">
+              Privacy & cookies
+            </Link>
           </div>
         </div>
       </div>

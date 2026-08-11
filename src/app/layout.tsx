@@ -4,6 +4,7 @@ import "./globals.css";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import ScrollReveal from "./ScrollReveal";
+import CookieConsent from "@/components/CookieConsent";
 import { getContent } from "@/content/lib";
 import { NAV_LINKS } from "@/components/site";
 
@@ -86,6 +87,7 @@ export default async function RootLayout({
           <SiteHeader brand={s.name} nav={nav} cta={s.headerCta} />
           <main>{children}</main>
           <SiteFooter site={s} nav={nav} />
+          <CookieConsent />
         </div>
         <ScrollReveal />
       </body>
