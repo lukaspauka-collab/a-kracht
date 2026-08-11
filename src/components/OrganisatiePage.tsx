@@ -1,130 +1,26 @@
 import Link from "next/link";
+import type { SiteContent } from "@/content/types";
 
-const CONTACT_ROWS = [
-  ["Vestigingsadres", "Delfgauw, Zuid-Holland"],
-  ["Telefoon", "06 – 00 00 00 00"],
-  ["E-mailadres", "info@a-kracht.nl"],
-  ["KvK-nummer", "00 0000 0000"],
-  ["AGB-code", "Via Coöperatie de Delta"],
-  ["Verantwoordelijk voor de zorg", "Coöperatie de Delta"],
-];
+type OrganisatieContent = SiteContent["organisatie"];
 
-const OFFER_POINTS = [
-  {
-    border: "var(--sage)",
-    title: "Wonen",
-    text: "Wonen in het huis in Delfgauw, met eigen kamers en gedeelde woonkamer en tuin.",
-  },
-  {
-    border: "var(--clay)",
-    title: "Begeleiding",
-    text: "Dag en nacht begeleiding door een vast team dat de bewoners door en door kent.",
-  },
-  {
-    border: "var(--blue)",
-    title: "Dagbesteding",
-    text: "Werk, school of dagbesteding — binnen en buiten het huis, passend bij ieder persoon.",
-  },
-  {
-    border: "var(--sage)",
-    title: "Wlz / VG-profiel",
-    text: "Zorg vanuit de Wlz (VG), met indicaties en profielen die passen bij een kleinschalige woonlocatie.",
-  },
-];
-
-const QUALITY = [
-  {
-    n: "01",
-    title: "Zorgplannen",
-    text: "Iedere bewoner heeft een eigen plan dat samen wordt opgesteld en regelmatig wordt geëvalueerd.",
-  },
-  {
-    n: "02",
-    title: "Deskundig personeel",
-    text: "Vaste, geschoolde begeleiders met een SKJ-registratie en doorlopende scholing.",
-  },
-  {
-    n: "03",
-    title: "Incidenten & verbetering",
-    text: "We registreren en bespreken incidenten en gebruiken ze om de zorg te verbeteren.",
-  },
-  {
-    n: "04",
-    title: "Medicatieveiligheid",
-    text: "Vaste afspraken voor toediening, controle en overdracht van medicatie.",
-  },
-];
-
-const COUNCIL_TASKS = [
-  "Behartigt de gemeenschappelijke belangen van cliënten",
-  "Overlegt regelmatig met de directie en het management",
-  "Geeft advies over beleidsvoornemens en belangrijke ontwikkelingen",
-  "Signaleert knelpunten en draagt verbeterpunten aan",
-  "Stimuleert inspraak en betrokkenheid van cliënten en hun vertegenwoordigers",
-];
-
-const COMMISSIONS = [
-  {
-    sw: "sw-sage",
-    title: "Commissie Gezond Leven, Bewegen en Goede Voeding",
-    text: "Richt zich op een gezonde leefstijl: gezonde en gevarieerde voeding, voldoende beweging, preventie en vitaliteit. De commissie denkt mee over verbeteringen en bewaakt dat gezond leven structureel aandacht krijgt.",
-    list: [
-      "Gezonde en gevarieerde voeding",
-      "Voldoende beweging en passende activiteiten",
-      "Preventie en vitaliteit",
-      "Bewustwording rondom gezondheid en welzijn",
-    ],
-  },
-  {
-    sw: "sw-clay",
-    title: "Commissie Werving & Selectie",
-    text: "Goede zorg begint bij betrokken en deskundige medewerkers. Door actieve betrokkenheid van ouders wordt bij nieuwe medewerkers nadrukkelijk gekeken naar cliëntgerichtheid en aansluiting bij de waarden van onze organisatie.",
-    list: [
-      "Denkt mee over profielen en functie-eisen",
-      "Neemt, waar passend, deel aan sollicitatieprocedures",
-      "Let op cliëntgerichtheid en passende houding van nieuwe medewerkers",
-      "Adviseert over benoemingen in sleutelposities",
-    ],
-  },
-  {
-    sw: "sw-blue",
-    title: "Commissie Activiteiten",
-    text: "Welzijn is meer dan alleen zorg. Ouders leveren waardevolle input vanuit hun dagelijkse ervaring en kennis van hun kind.",
-    list: [
-      "Dagbesteding en recreatieve activiteiten",
-      "Aansluiting bij wensen en mogelijkheden van cliënten",
-      "Betrokkenheid van vrijwilligers en familie",
-      "Evaluatie en verbetering van het activiteitenaanbod",
-    ],
-  },
-  {
-    sw: "sw-sage",
-    title: "Kwaliteit van Zorg en Dienstverlening",
-    text: "De cliëntenraad volgt en bespreekt structureel de kwaliteit van zorg en dienstverlening. Ook hier spelen ouders een actieve rol in het signaleren van aandachtspunten en het meedenken over verbeteringen.",
-    list: [
-      "Tevredenheid van cliënten",
-      "Veiligheid en zorgprocessen",
-      "Klachten en verbetermaatregelen",
-      "Continuïteit en deskundigheid van zorg",
-    ],
-  },
-];
-
-export default function OrganisatiePage() {
+export default function OrganisatiePage({
+  content,
+}: {
+  content: OrganisatieContent;
+}) {
   return (
     <div>
       {/* header */}
       <section data-reveal style={{ padding: "72px 24px 56px" }}>
         <div className="container" style={{ padding: 0 }}>
           <p className="eyebrow" style={{ margin: "0 0 14px" }}>
-            Over de organisatie
+            {content.eyebrow}
           </p>
           <h1 className="page-title" style={{ margin: "0 0 22px", maxWidth: "20ch" }}>
-            Zorg met heldere afspraken
+            {content.title}
           </h1>
           <p className="lead" style={{ maxWidth: "58ch" }}>
-            Wie verantwoordelijk is voor de zorg, hoe wij kwaliteit bewaken en
-            waar je terecht kunt met vragen, klachten en privacyzaken.
+            {content.lead}
           </p>
         </div>
       </section>
@@ -142,12 +38,12 @@ export default function OrganisatiePage() {
           }}
         >
           <div>
-            <p className="eyebrow">Wie zijn wij</p>
+            <p className="eyebrow">{content.whoEyebrow}</p>
             <h2
               className="serif"
               style={{ fontSize: 30, fontWeight: 500, margin: 0, lineHeight: 1.3 }}
             >
-              Een kleine woonzorglocatie, onderdeel van Coöperatie de Delta
+              {content.whoTitle}
             </h2>
           </div>
           <div>
@@ -159,10 +55,7 @@ export default function OrganisatiePage() {
                 fontSize: 16.5,
               }}
             >
-              A-Kracht begeleiding is een kleinschalige woonzorglocatie in
-              Delfgauw voor volwassenen met autisme. De zorg wordt aangeboden
-              onder verantwoordelijkheid van Coöperatie de Delta, waarbij de
-              bewoners als cliënt zijn ingeschreven.
+              {content.whoP1}
             </p>
             <p
               style={{
@@ -172,17 +65,15 @@ export default function OrganisatiePage() {
                 fontSize: 16,
               }}
             >
-              Het huis heeft negen plekken en wordt opgezet en geleid door
-              Moniek Zondag. Binnen de coöperatie delen kleine zorgaanbieders
-              kennis, achterwacht en kwaliteitstoetsing.
+              {content.whoP2}
             </p>
             <a
-              href="https://www.cooperatiededelta.nl"
+              href={content.whoLinkHref}
               target="_blank"
               rel="noreferrer"
               className="link-quiet"
             >
-              Meer over Coöperatie de Delta →
+              {content.whoLinkLabel} →
             </a>
           </div>
         </div>
@@ -209,26 +100,21 @@ export default function OrganisatiePage() {
           }}
         >
           <div>
-            <p className="eyebrow">Contact &amp; organisatie</p>
+            <p className="eyebrow">{content.dataEyebrow}</p>
             <h2
               className="serif"
               style={{ fontSize: 30, fontWeight: 500, margin: "0 0 14px", lineHeight: 1.3 }}
             >
-              Gegevens van de locatie
+              {content.dataTitle}
             </h2>
             <p style={{ margin: 0, color: "var(--muted)", lineHeight: 1.8, fontSize: 16 }}>
-              Alle formele gegevens op een rij. Vragen over de zorgverlening
-              stellen kan altijd via de{" "}
-              <Link href="/contact">
-                contactpagina
-              </Link>
-              .
+              {content.dataLead}
             </p>
           </div>
           <div style={{ display: "flex", flexDirection: "column" }}>
-            {CONTACT_ROWS.map(([label, value]) => (
+            {content.dataRows.map((row) => (
               <div
-                key={label}
+                key={row.label}
                 style={{
                   display: "flex",
                   justifyContent: "space-between",
@@ -237,9 +123,9 @@ export default function OrganisatiePage() {
                   borderBottom: "1px solid var(--border)",
                 }}
               >
-                <span style={{ fontSize: 15.5 }}>{label}</span>
+                <span style={{ fontSize: 15.5 }}>{row.label}</span>
                 <span style={{ fontSize: 15, color: "var(--muted)", textAlign: "right" }}>
-                  {value}
+                  {row.value}
                 </span>
               </div>
             ))}
@@ -261,20 +147,20 @@ export default function OrganisatiePage() {
             }}
           >
             <div>
-              <p className="eyebrow">Zorgaanbod &amp; doelgroep</p>
+              <p className="eyebrow">{content.offerEyebrow}</p>
               <h2 className="section-title" style={{ margin: 0 }}>
-                Voor wie en welke zorg
+                {content.offerTitle}
               </h2>
             </div>
             <Link href="/diensten" className="link-quiet">
-              Bekijk ons aanbod →
+              {content.offerLinkLabel} →
             </Link>
           </div>
           <div
             className="grid-2"
             style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 22 }}
           >
-            {OFFER_POINTS.map((o) => (
+            {content.offer.map((o) => (
               <article
                 key={o.title}
                 className="card"
@@ -306,9 +192,9 @@ export default function OrganisatiePage() {
       >
         <div className="container" style={{ padding: 0 }}>
           <div style={{ maxWidth: "62ch", marginBottom: 44 }}>
-            <p className="eyebrow">Kwaliteit &amp; veiligheid</p>
+            <p className="eyebrow">{content.qualityEyebrow}</p>
             <h2 className="section-title" style={{ margin: "0 0 16px" }}>
-              Kwaliteit is een wettelijke plicht — en vanzelfsprekend
+              {content.qualityTitle}
             </h2>
             <p
               style={{
@@ -318,9 +204,7 @@ export default function OrganisatiePage() {
                 fontSize: 16.5,
               }}
             >
-              De Wet kwaliteit, klachten en geschillen zorg (Wkkgz) verplicht
-              zorgaanbieders hun kwaliteit te bewaken, beheersen en verbeteren.
-              Dat doen we op vier vaste manieren.
+              {content.qualityLead}
             </p>
           </div>
           <div
@@ -331,7 +215,7 @@ export default function OrganisatiePage() {
               gap: 20,
             }}
           >
-            {QUALITY.map((q) => (
+            {content.quality.map((q) => (
               <div key={q.n} className="card" style={{ padding: "26px 26px 30px" }}>
                 <p
                   className="serif"
@@ -364,12 +248,12 @@ export default function OrganisatiePage() {
           }}
         >
           <div>
-            <p className="eyebrow">Klachten &amp; geschillen</p>
+            <p className="eyebrow">{content.complaintEyebrow}</p>
             <h2
               className="serif"
               style={{ fontSize: 30, fontWeight: 500, margin: 0, lineHeight: 1.3 }}
             >
-              Klachtenfunctionaris
+              {content.complaintTitle}
             </h2>
           </div>
           <div>
@@ -381,23 +265,18 @@ export default function OrganisatiePage() {
                 fontSize: 16,
               }}
             >
-              De zorgverlening aan onze bewoners vindt plaats onder
-              verantwoordelijkheid van Coöperatie de Delta. Voor klachten over
-              de zorgverlening geldt de klachtenregeling van de coöperatie.
-              Daar vind je ook de onafhankelijke klachtenfunctionaris en het
-              telefoonnummer.
+              {content.complaintP1}
             </p>
             <p style={{ margin: "0 0 26px", lineHeight: 1.8, color: "var(--muted)", fontSize: 16 }}>
-              Liever eerst even praten? Neem dan contact op met Moniek of de
-              zorgverlener — samen komen we het vaakst verder.
+              {content.complaintP2}
             </p>
             <a
-              href="https://www.cooperatiededelta.nl/klachtenregeling"
+              href={content.complaintCtaHref}
               target="_blank"
               rel="noreferrer"
               className="btn btn--ghost"
             >
-              Naar de klachtenregeling
+              {content.complaintCtaLabel}
             </a>
           </div>
         </div>
@@ -424,7 +303,7 @@ export default function OrganisatiePage() {
               className="serif"
               style={{ fontSize: 30, fontWeight: 500, margin: "0 0 12px", lineHeight: 1.3 }}
             >
-              Wil je aanmelden?
+              {content.applyTitle}
             </h2>
             <p
               style={{
@@ -434,16 +313,15 @@ export default function OrganisatiePage() {
                 fontSize: 16.5,
               }}
             >
-              Aanmelden kan via het aanmeldformulier van Coöperatie de Delta of
-              via ons contactformulier. We kijken samen wat er nodig is.
+              {content.applyText}
             </p>
           </div>
           <div style={{ display: "flex", flexWrap: "wrap", gap: 14 }}>
-            <Link href="/contact" className="btn btn--light">
-              Contactformulier
+            <Link href={content.applyCtaHref} className="btn btn--light">
+              {content.applyCtaLabel}
             </Link>
             <a
-              href="https://www.cooperatiededelta.nl"
+              href={content.applyCta2Href}
               target="_blank"
               rel="noreferrer"
               className="btn btn--ghost"
@@ -453,7 +331,7 @@ export default function OrganisatiePage() {
                 borderColor: "rgba(252,250,247,0.5)",
               }}
             >
-              Aanmeldformulier Delta
+              {content.applyCta2Label}
             </a>
           </div>
         </div>
@@ -463,27 +341,18 @@ export default function OrganisatiePage() {
       <section data-reveal style={{ padding: "88px 24px" }}>
         <div className="container" style={{ padding: 0 }}>
           <div style={{ maxWidth: "62ch", marginBottom: 44 }}>
-            <p className="eyebrow">Medezeggenschap</p>
+            <p className="eyebrow">{content.councilEyebrow}</p>
             <h2 className="section-title" style={{ margin: "0 0 18px" }}>
-              De cliëntenraad
+              {content.councilTitle}
             </h2>
             <p style={{ margin: "0 0 16px", lineHeight: 1.8, color: "var(--muted)", fontSize: 16.5 }}>
-              De cliëntenraad vertegenwoordigt de belangen van bewoners en
-              cliënten binnen onze kleinschalige zorginstelling. Wij zetten ons
-              in voor persoonlijke, respectvolle en kwalitatief goede zorg,
-              waarbij de stem van cliënten en hun naasten centraal staat.
+              {content.councilP1}
             </p>
             <p style={{ margin: "0 0 16px", lineHeight: 1.8, color: "var(--muted)", fontSize: 16.5 }}>
-              Binnen onze organisatie vinden wij het belangrijk dat iedereen
-              zich gehoord voelt. De cliëntenraad speelt hierin een actieve rol.
-              Wij denken en praten mee over beleid, kwaliteit van zorg,
-              veiligheid, welzijn en de dagelijkse gang van zaken.
+              {content.councilP2}
             </p>
             <p style={{ margin: 0, lineHeight: 1.8, color: "var(--muted)", fontSize: 16.5 }}>
-              We geloven in de kracht van verbinding tussen bewoners,
-              zorgprofessionals en ouders. We doen het samen. Inclusie,
-              veiligheid, respect, verbinding en empowerment zijn belangrijke
-              waarden in onze visie.
+              {content.councilP3}
             </p>
           </div>
 
@@ -492,10 +361,10 @@ export default function OrganisatiePage() {
             style={{ padding: "34px 36px", borderRadius: 18, marginBottom: 56 }}
           >
             <h3 className="serif" style={{ fontSize: 21, fontWeight: 600, margin: "0 0 18px" }}>
-              De cliëntenraad:
+              {content.councilTasksTitle}
             </h3>
             <ul className="check-list" style={{ margin: 0 }}>
-              {COUNCIL_TASKS.map((t) => (
+              {content.councilTasks.map((t) => (
                 <li key={t}>{t}</li>
               ))}
             </ul>
@@ -507,13 +376,12 @@ export default function OrganisatiePage() {
                 fontSize: 15.5,
               }}
             >
-              Bij bepaalde besluiten heeft de cliëntenraad advies- of
-              instemmingsrecht, conform de geldende wet- en regelgeving.
+              {content.councilNote}
             </p>
           </div>
 
           <h2 className="section-title" style={{ fontSize: 32, margin: "0 0 18px" }}>
-            Commissies
+            {content.commissionsTitle}
           </h2>
           <p
             style={{
@@ -524,14 +392,13 @@ export default function OrganisatiePage() {
               fontSize: 16.5,
             }}
           >
-            Vier commissies, waarin naasten actief meedenken over de dagelijkse
-            zorg en de richting van de organisatie.
+            {content.commissionsLead}
           </p>
           <div
             className="grid-2"
             style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 22 }}
           >
-            {COMMISSIONS.map((c) => (
+            {content.commissions.map((c) => (
               <article key={c.title} className="card" style={{ padding: "32px 34px" }}>
                 <span className={`card-icon ${c.sw}`} />
                 <h3 className="card-title" style={{ fontSize: 20, margin: "0 0 10px" }}>
@@ -572,12 +439,12 @@ export default function OrganisatiePage() {
           }}
         >
           <div>
-            <p className="eyebrow">Privacy</p>
+            <p className="eyebrow">{content.privacyEyebrow}</p>
             <h2
               className="serif"
               style={{ fontSize: 30, fontWeight: 500, margin: 0, lineHeight: 1.3 }}
             >
-              Privacyverklaring
+              {content.privacyTitle}
             </h2>
           </div>
           <div>
@@ -589,24 +456,18 @@ export default function OrganisatiePage() {
                 fontSize: 16,
               }}
             >
-              De zorgverlening aan onze bewoners vindt plaats onder
-              verantwoordelijkheid van Coöperatie de Delta. Voor de verwerking
-              van persoonsgegevens in het kader van de zorgverlening geldt de{" "}
+              {content.privacyP1}{" "}
               <a
-                href="https://www.cooperatiededelta.nl"
+                href={content.privacyLinkHref}
                 target="_blank"
                 rel="noreferrer"
               >
-                privacyverklaring van Coöperatie de Delta
+                {content.privacyLinkLabel}
               </a>
               .
             </p>
             <p style={{ margin: 0, lineHeight: 1.8, color: "var(--muted)", fontSize: 16 }}>
-              A-Kracht verwerkt daarnaast persoonsgegevens voor zover dit
-              noodzakelijk is voor de eigen bedrijfsvoering. Voor deze
-              verwerkingen geldt de privacyverklaring van A-Kracht, op te vragen
-              via{" "}
-              <a href="mailto:info@a-kracht.nl">info@a-kracht.nl</a>.
+              {content.privacyP2}
             </p>
           </div>
         </div>

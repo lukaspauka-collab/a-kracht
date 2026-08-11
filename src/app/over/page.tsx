@@ -1,33 +1,40 @@
 import type { Metadata } from "next";
 import OverPage from "@/components/OverPage";
 import JsonLd from "../jsonld";
+import { getContent } from "@/content/lib";
 
-export const metadata: Metadata = {
-  title: "Over Moniek Zondag",
-  description:
-    "Moniek Zondag werkt ruim twintig jaar in de zorg voor mensen met autisme. Leer haar kennen: SPH-diploma, registratie SKJ en haar visie op kleinschalige zorg.",
-  alternates: {
-    canonical: "/over",
-  },
-  openGraph: {
-    title: "Over Moniek Zondag — A-Kracht begeleiding",
-    description:
-      "Ruim twintig jaar ervaring in de zorg voor mensen met autisme. Een klein huis, een vast team en de ruimte om te doen wat nodig is.",
-  },
-};
+export const dynamic = "force-dynamic";
 
-export default function Over() {
+export async function generateMetadata(): Promise<Metadata> {
+  const content = await getContent();
+  const s = content.site;
+  return {
+    title: "Over Moniek Zondag",
+    description: s.description,
+    alternates: {
+      canonical: "/over",
+    },
+    openGraph: {
+      title: `Over ${content.over.name} — ${s.name}`,
+      description: s.description,
+    },
+  };
+}
+
+export default async function Over() {
+  const content = await getContent();
+  const s = content.site;
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Person",
-    "@id": "https://a-kracht.nl/over/#person",
-    name: "Moniek Zondag",
-    url: "https://a-kracht.nl/over",
+    "@id": `${s.url}/over/#person`,
+    name: content.over.name,
+    url: `${s.url}/over`,
     jobTitle: "Oprichter en begeleider",
     worksFor: {
       "@type": "Organization",
-      name: "A-Kracht begeleiding",
-      url: "https://a-kracht.nl",
+      name: s.name,
+      url: s.url,
     },
     alumniOf: {
       "@type": "CollegeOrUniversity",
@@ -40,14 +47,13 @@ export default function Over() {
       "begeleid wonen",
       "24-uurszorg",
     ],
-    description:
-      "Oprichter van A-Kracht begeleiding. Ruim twintig jaar ervaring in de zorg voor mensen met autisme. Geregistreerd bij SKJ / Registerplein.",
+    description: s.description,
   };
 
   return (
     <>
       <JsonLd data={jsonLd} />
-      <OverPage />
+      <OverPage content={content.over} />
     </>
   );
 }

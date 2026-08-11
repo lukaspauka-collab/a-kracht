@@ -1,7 +1,24 @@
 import Link from "next/link";
-import { NAV_ITEMS } from "./site";
 
-export default function SiteFooter() {
+type NavItem = { label: string; href: string };
+
+export default function SiteFooter({
+  site,
+  nav,
+}: {
+  site: {
+    name: string;
+    footerTagline: string;
+    email: string;
+    phone: string;
+    phoneDisplay: string;
+    locality: string;
+    region: string;
+    copyrightYear: string;
+    parentOrganization: string;
+  };
+  nav: NavItem[];
+}) {
   return (
     <footer className="footer">
       <div
@@ -18,7 +35,7 @@ export default function SiteFooter() {
             className="serif"
             style={{ fontSize: 21, fontWeight: 600, margin: "0 0 12px" }}
           >
-            A-Kracht begeleiding
+            {site.name}
           </p>
           <p
             style={{
@@ -29,27 +46,28 @@ export default function SiteFooter() {
               maxWidth: "38ch",
             }}
           >
-            Kleinschalige 24-uurszorg en overbruggingszorg voor mensen met
-            autisme in Delfgauw.
+            {site.footerTagline}
           </p>
         </div>
         <div>
           <p className="footer-heading">Contact</p>
           <div className="footer-list">
-            <a href="mailto:info@a-kracht.nl" className="footer-link">
-              info@a-kracht.nl
+            <a href={`mailto:${site.email}`} className="footer-link">
+              {site.email}
             </a>
-            <a href="tel:+31600000000" className="footer-link">
-              06 – 00 00 00 00
+            <a href={`tel:${site.phone}`} className="footer-link">
+              {site.phoneDisplay}
             </a>
-            <span style={{ color: "var(--muted)" }}>Delfgauw, Zuid-Holland</span>
+            <span style={{ color: "var(--muted)" }}>
+              {site.locality}, {site.region}
+            </span>
           </div>
         </div>
         <div>
           <p className="footer-heading">Pagina&apos;s</p>
           <div className="footer-list">
-            {NAV_ITEMS.map((item) => (
-              <Link key={item.key} href={item.href} className="footer-link">
+            {nav.map((item) => (
+              <Link key={item.href} href={item.href} className="footer-link">
                 {item.label}
               </Link>
             ))}
@@ -57,14 +75,14 @@ export default function SiteFooter() {
         </div>
       </div>
       <div className="footer-bottom container">
-        <span>© 2026 A-Kracht begeleiding</span>
+        <span>© {site.copyrightYear} {site.name}</span>
         <Link
           href="/organisatie"
           style={{ color: "var(--muted)", textDecoration: "none" }}
         >
           Privacy &amp; klachten
         </Link>
-        <span>Onderdeel van Coöperatie de Delta</span>
+        <span>Onderdeel van {site.parentOrganization}</span>
       </div>
     </footer>
   );

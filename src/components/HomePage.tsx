@@ -1,72 +1,19 @@
 import Link from "next/link";
 import ImageSlot from "./ImageSlot";
+import Highlight from "./Highlight";
+import type { SiteContent } from "@/content/types";
 
-const VALUES = [
-  {
-    sw: "sw-sage",
-    title: "Veiligheid",
-    text: "Voorspelbare dagen, duidelijke afspraken en een team dat je door en door kent.",
-  },
-  {
-    sw: "sw-clay",
-    title: "Kleinschaligheid",
-    text: "Negen bewoners, één vast team. Geen wisselende gezichten, geen wachtrijen.",
-  },
-  {
-    sw: "sw-blue",
-    title: "Eigen regie",
-    text: "Jij bepaalt het tempo. Wij ondersteunen waar het nodig is, en stappen terug waar het kan.",
-  },
-  {
-    sw: "sw-sage",
-    title: "Echt contact",
-    text: "Zorg is mensenwerk. We zijn eerlijk, gewoon en dichtbij — ook op moeilijke dagen.",
-  },
-];
+type HomeContent = SiteContent["home"];
 
-const OFFER = [
-  {
-    n: "01",
-    title: "24-uurszorg",
-    text: "Wonen met begeleiding die dag en nacht aanwezig is, in een huiselijke setting.",
-  },
-  {
-    n: "02",
-    title: "Overbruggingszorg",
-    text: "Tijdelijke plek en begeleiding in de periode tot een definitieve woonplek.",
-  },
-  {
-    n: "03",
-    title: "Ambulante begeleiding",
-    text: "Ondersteuning bij jou thuis: structuur, administratie, dagritme en contact.",
-  },
-];
+const HIGHLIGHT_STYLE: React.CSSProperties = {
+  color: "var(--sage-strong)",
+  background:
+    "linear-gradient(transparent 68%, rgba(110,139,116,0.22) 68%, rgba(110,139,116,0.22) 92%, transparent 92%)",
+  padding: "0 2px",
+};
 
-const DAY = [
-  {
-    time: "07:30",
-    strong: "Opstaan in eigen tempo.",
-    text: " Begeleiding loopt langs, ontbijt staat klaar.",
-  },
-  {
-    time: "09:30",
-    strong: "Werk, school of dagbesteding.",
-    text: " Wie thuis is, pakt iets in en om het huis op.",
-  },
-  {
-    time: "17:30",
-    strong: "Samen eten.",
-    text: " Aanschuiven mag, alleen eten mag ook.",
-  },
-  {
-    time: "22:00",
-    strong: "Rust in huis.",
-    text: " 's Nachts is er altijd een begeleider aanwezig.",
-    last: true,
-  },
-];
-
-export default function HomePage() {
+export default function HomePage({ content }: { content: HomeContent }) {
+  const dayRows = content.day;
   return (
     <div>
       {/* ============ HERO ============ */}
@@ -121,7 +68,7 @@ export default function HomePage() {
                   display: "inline-block",
                 }}
               />
-              Delfgauw · 24-uurszorg
+              {content.heroEyebrow}
             </p>
             <h1
               className="serif hero-title"
@@ -134,21 +81,7 @@ export default function HomePage() {
                 textWrap: "pretty",
               }}
             >
-              Kleinschalige,
-              <br />
-              <span
-                style={{
-                  color: "var(--sage-strong)",
-                  background:
-                    "linear-gradient(transparent 68%, rgba(110,139,116,0.22) 68%, rgba(110,139,116,0.22) 92%, transparent 92%)",
-                  padding: "0 2px",
-                }}
-              >
-                veilige
-              </span>{" "}
-              begeleiding
-              <br />
-              bij autisme
+              <Highlight text={content.heroTitle} highlightStyle={HIGHLIGHT_STYLE} />
             </h1>
             <p
               style={{
@@ -159,16 +92,14 @@ export default function HomePage() {
                 margin: "0 0 36px",
               }}
             >
-              Een klein, huiselijk huis voor negen bewoners. Geen instelling,
-              maar rust, ritme en mensen die je kennen. Opgezet en geleid door
-              Moniek Zondag, gespecialiseerd in autisme en comorbiditeit.
+              {content.heroLead}
             </p>
             <div style={{ display: "flex", flexWrap: "wrap", gap: 14 }}>
-              <Link href="/contact" className="btn btn--primary">
-                Plan een kennismaking
+              <Link href={content.heroCtaPrimaryHref} className="btn btn--primary">
+                {content.heroCtaPrimary}
               </Link>
-              <Link href="/diensten" className="btn btn--ghost">
-                Bekijk het aanbod
+              <Link href={content.heroCtaSecondaryHref} className="btn btn--ghost">
+                {content.heroCtaSecondary}
               </Link>
             </div>
           </div>
@@ -215,8 +146,8 @@ export default function HomePage() {
               }}
             >
               <ImageSlot
-                src="/images/huis-tuin.jpg"
-                placeholder="Foto van het huis of de tuin"
+                src={content.heroImage.src}
+                placeholder={content.heroImage.placeholder}
               />
             </div>
           </div>
@@ -235,19 +166,14 @@ export default function HomePage() {
             fontSize: 14.5,
           }}
         >
-          <span>
-            <strong style={{ color: "var(--ink)", fontWeight: 600 }}>9</strong>{" "}
-            bewoners
-          </span>
-          <span>
-            <strong style={{ color: "var(--ink)", fontWeight: 600 }}>22</strong>{" "}
-            jaar in de zorg
-          </span>
-          <span>
-            <strong style={{ color: "var(--ink)", fontWeight: 600 }}>24/7</strong>{" "}
-            aanwezige begeleiding
-          </span>
-          <span>Onderdeel van Coöperatie de Delta</span>
+          {content.stats.map((stat) => (
+            <span key={stat.label}>
+              <strong style={{ color: "var(--ink)", fontWeight: 600 }}>
+                {stat.value}
+              </strong>{" "}
+              {stat.label}
+            </span>
+          ))}
         </div>
       </section>
 
@@ -283,8 +209,7 @@ export default function HomePage() {
               textWrap: "pretty",
             }}
           >
-            Ieder mens heeft eigen kracht. Mijn werk is die kracht ruimte geven —
-            in een omgeving die voorspelbaar, veilig en gewoon prettig is.
+            {content.quoteText}
           </p>
           <p
             style={{
@@ -295,7 +220,7 @@ export default function HomePage() {
               color: "var(--muted)",
             }}
           >
-            Moniek Zondag · oprichter
+            {content.quoteAuthor}
           </p>
         </div>
       </section>
@@ -303,9 +228,9 @@ export default function HomePage() {
       {/* ============ KERNWAARDEN ============ */}
       <section data-reveal style={{ padding: "92px 24px" }}>
         <div className="container" style={{ padding: 0 }}>
-          <p className="eyebrow">Kernwaarden</p>
+          <p className="eyebrow">{content.coreEyebrow}</p>
           <h2 className="section-title" style={{ margin: "0 0 46px" }}>
-            Waar wij elke dag op terugvallen
+            {content.coreTitle}
           </h2>
           <div
             className="grid-2"
@@ -315,7 +240,7 @@ export default function HomePage() {
               gap: 22,
             }}
           >
-            {VALUES.map((v) => (
+            {content.core.map((v) => (
               <article
                 key={v.title}
                 className="card card--hover-border"
@@ -353,11 +278,11 @@ export default function HomePage() {
             }}
           >
             <div>
-              <p className="eyebrow">Aanbod</p>
-              <h2 className="section-title">Wat wij bieden</h2>
+              <p className="eyebrow">{content.offerEyebrow}</p>
+              <h2 className="section-title">{content.offerTitle}</h2>
             </div>
             <Link href="/diensten" className="link-quiet">
-              Alle diensten →
+              {content.offerLinkLabel} →
             </Link>
           </div>
           <div
@@ -368,7 +293,7 @@ export default function HomePage() {
               gap: 22,
             }}
           >
-            {OFFER.map((o) => (
+            {content.offer.map((o) => (
               <article
                 key={o.n}
                 className="card card--sand card--hover"
@@ -403,9 +328,9 @@ export default function HomePage() {
           }}
         >
           <div>
-            <p className="eyebrow">Een gewone dag</p>
+            <p className="eyebrow">{content.dayEyebrow}</p>
             <h2 className="section-title" style={{ margin: "0 0 18px" }}>
-              Ritme geeft rust
+              {content.dayTitle}
             </h2>
             <p
               style={{
@@ -415,13 +340,11 @@ export default function HomePage() {
                 fontSize: 16.5,
               }}
             >
-              De dag heeft een vaste vorm, maar geen dwang. Wie een moeilijke
-              ochtend heeft, mag die hebben. Wie liever op de eigen kamer eet,
-              eet op de eigen kamer.
+              {content.dayIntro}
             </p>
           </div>
           <div style={{ display: "flex", flexDirection: "column" }}>
-            {DAY.map((d) => (
+            {dayRows.map((d, i) => (
               <div
                 key={d.time}
                 style={{
@@ -430,7 +353,8 @@ export default function HomePage() {
                   gap: 24,
                   padding: "20px 0",
                   borderTop: "1px solid var(--border)",
-                  borderBottom: d.last ? "1px solid var(--border)" : undefined,
+                  borderBottom:
+                    i === dayRows.length - 1 ? "1px solid var(--border)" : undefined,
                 }}
               >
                 <span
@@ -474,8 +398,8 @@ export default function HomePage() {
               }}
             >
               <ImageSlot
-                src="/images/woonkamer.jpg"
-                placeholder="Woonkamer of gevel van het huis"
+                src={content.galleryMain.src}
+                placeholder={content.galleryMain.placeholder}
               />
             </div>
             <div
@@ -493,8 +417,8 @@ export default function HomePage() {
                 }}
               >
                 <ImageSlot
-                  src="/images/tuin.jpg"
-                  placeholder="Detail: tuin, keuken"
+                  src={content.gallerySide1.src}
+                  placeholder={content.gallerySide1.placeholder}
                 />
               </div>
               <div
@@ -505,15 +429,14 @@ export default function HomePage() {
                 }}
               >
                 <ImageSlot
-                  src="/images/kamer.jpg"
-                  placeholder="Detail: eigen kamer"
+                  src={content.gallerySide2.src}
+                  placeholder={content.gallerySide2.placeholder}
                 />
               </div>
             </div>
           </div>
           <p style={{ margin: "18px 0 0", fontSize: 14, color: "var(--muted)" }}>
-            Het huis in Delfgauw — negen eigen kamers, gedeelde woonkamer en
-            tuin.
+            {content.galleryCaption}
           </p>
         </div>
       </section>
@@ -522,7 +445,7 @@ export default function HomePage() {
       <section data-reveal style={{ padding: "92px 24px" }}>
         <div className="container" style={{ padding: 0 }}>
           <h2 className="section-title" style={{ margin: "0 0 18px" }}>
-            Voor wie is dit huis?
+            {content.audienceTitle}
           </h2>
           <p
             style={{
@@ -533,8 +456,7 @@ export default function HomePage() {
               fontSize: 16.5,
             }}
           >
-            Eerlijk zijn over wat wel en niet past voorkomt teleurstelling — voor
-            jou en voor ons.
+            {content.audienceLead}
           </p>
           <div
             className="grid-2"
@@ -552,13 +474,12 @@ export default function HomePage() {
               }}
             >
               <h3 className="card-title" style={{ fontSize: 20, margin: "0 0 14px" }}>
-                Dit past goed
+                {content.audienceYesTitle}
               </h3>
               <ul className="check-list">
-                <li>Volwassenen met een autismespectrumstoornis</li>
-                <li>Behoefte aan een prikkelarme, kleine woonomgeving</li>
-                <li>Een Wlz-indicatie, Wmo-beschikking of PGB</li>
-                <li>Willen werken aan zelfstandigheid, in eigen tempo</li>
+                {content.audienceYes.map((li) => (
+                  <li key={li}>{li}</li>
+                ))}
               </ul>
             </div>
             <div
@@ -569,13 +490,12 @@ export default function HomePage() {
               }}
             >
               <h3 className="card-title" style={{ fontSize: 20, margin: "0 0 14px" }}>
-                Dit past minder goed
+                {content.audienceNoTitle}
               </h3>
               <ul className="check-list">
-                <li>Acute crisiszorg of gesloten opname</li>
-                <li>Actieve verslavingsproblematiek op de voorgrond</li>
-                <li>Zorg waarbij structureel twee begeleiders nodig zijn</li>
-                <li>Intensieve verpleegkundige of somatische zorg</li>
+                {content.audienceNo.map((li) => (
+                  <li key={li}>{li}</li>
+                ))}
               </ul>
             </div>
           </div>
@@ -608,7 +528,7 @@ export default function HomePage() {
                 lineHeight: 1.3,
               }}
             >
-              Onderdeel van Coöperatie de Delta
+              {content.deltaTitle}
             </h2>
             <p
               style={{
@@ -618,13 +538,11 @@ export default function HomePage() {
                 fontSize: 16.5,
               }}
             >
-              A-Kracht begeleiding werkt zelfstandig, maar niet alleen. Binnen de
-              coöperatie delen kleine zorgaanbieders kennis, achterwacht en
-              kwaliteitstoetsing.
+              {content.deltaText}
             </p>
           </div>
           <Link href="/contact" className="btn btn--light">
-            Neem contact op
+            {content.deltaCta}
           </Link>
         </div>
       </section>

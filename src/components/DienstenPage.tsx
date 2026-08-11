@@ -1,46 +1,22 @@
 import Link from "next/link";
+import type { SiteContent } from "@/content/types";
 
-const SERVICES = [
-  { sw: "sw-sage", title: "24-uurszorg", text: "Wonen in het huis met altijd begeleiding aanwezig." },
-  { sw: "sw-clay", title: "Overbruggingszorg", text: "Een veilige tussenstap tot de definitieve woonplek er is." },
-  { sw: "sw-blue", title: "Ambulante begeleiding", text: "Ondersteuning bij jou thuis, in jouw eigen ritme." },
-  { sw: "sw-sage", title: "Dagstructuur", text: "Samen een dag opbouwen die haalbaar is en houvast geeft." },
-  { sw: "sw-clay", title: "Administratie & financiën", text: "Post, regelzaken en instanties — stap voor stap, samen." },
-  { sw: "sw-blue", title: "Netwerk & familie", text: "Korte lijnen met naasten, met respect voor ieders rol." },
-  { sw: "sw-sage", title: "Werk & dagbesteding", text: "Zoeken naar een plek die energie geeft in plaats van kost." },
-  { sw: "sw-clay", title: "Crisispreventie", text: "Signalen vroeg herkennen en een plan dat klaarligt." },
-];
+type DienstenContent = SiteContent["diensten"];
 
-const STEPS = [
-  { n: "Stap 1", title: "Kennismaken", text: "Een gesprek zonder verplichtingen, thuis of in het huis." },
-  { n: "Stap 2", title: "Beeld vormen", text: "We kijken samen naar de zorgvraag, indicatie en wat past." },
-  { n: "Stap 3", title: "Proefperiode", text: "Meelopen en logeren, zodat het klikken van twee kanten komt." },
-  { n: "Stap 4", title: "Start", text: "Zorgplan, vaste contactpersoon en een rustige verhuizing." },
-];
-
-const FUNDING = [
-  { title: "Wlz", text: "Langdurige zorg met verblijf, via het CIZ." },
-  { title: "Wmo", text: "Begeleiding thuis, via de gemeente Pijnacker-Nootdorp." },
-  { title: "PGB", text: "Zelf regie over het budget en de invulling van de zorg." },
-  { title: "Zorg in natura", text: "Via de contracten van Coöperatie de Delta." },
-];
-
-export default function DienstenPage() {
+export default function DienstenPage({ content }: { content: DienstenContent }) {
   return (
     <div>
       {/* header */}
       <section data-reveal style={{ padding: "72px 24px 52px" }}>
         <div className="container" style={{ padding: 0 }}>
           <p className="eyebrow" style={{ margin: "0 0 14px" }}>
-            Diensten
+            {content.eyebrow}
           </p>
           <h1 className="page-title" style={{ margin: "0 0 20px", maxWidth: "20ch" }}>
-            Zorg die past bij hoe jij leeft
+            {content.title}
           </h1>
           <p className="lead" style={{ maxWidth: "58ch" }}>
-            Van volledig wonen met 24-uurs begeleiding tot een paar uur
-            ondersteuning per week. We kijken eerst wat er nodig is, daarna pas
-            naar de vorm.
+            {content.lead}
           </p>
         </div>
       </section>
@@ -56,7 +32,7 @@ export default function DienstenPage() {
             padding: 0,
           }}
         >
-          {SERVICES.map((s) => (
+          {content.services.map((s) => (
             <article
               key={s.title}
               className="card card--hover-lift"
@@ -91,12 +67,12 @@ export default function DienstenPage() {
           }}
         >
           <div>
-            <p className="eyebrow">Toelichting</p>
+            <p className="eyebrow">{content.explainEyebrow}</p>
             <h2
               className="serif"
               style={{ fontSize: 29, fontWeight: 500, margin: 0, lineHeight: 1.3 }}
             >
-              Wat is overbruggingszorg precies?
+              {content.explainTitle}
             </h2>
           </div>
           <div>
@@ -108,13 +84,10 @@ export default function DienstenPage() {
                 fontSize: 16,
               }}
             >
-              Wachten op een woonplek duurt vaak lang. Overbruggingszorg vangt
-              die periode op: je krijgt een tijdelijke plek of begeleiding thuis,
-              zodat de situatie niet verder vastloopt.
+              {content.explainP1}
             </p>
             <p style={{ margin: 0, lineHeight: 1.8, color: "var(--muted)", fontSize: 16 }}>
-              We stemmen af met de toekomstige woonplek, zodat de overstap straks
-              zo rustig mogelijk verloopt.
+              {content.explainP2}
             </p>
           </div>
         </div>
@@ -124,7 +97,7 @@ export default function DienstenPage() {
       <section data-reveal style={{ padding: "0 24px 92px" }}>
         <div className="container" style={{ padding: 0 }}>
           <h2 className="section-title" style={{ fontSize: 32, margin: "0 0 18px" }}>
-            Zo verloopt een aanmelding
+            {content.stepsTitle}
           </h2>
           <p
             style={{
@@ -135,8 +108,7 @@ export default function DienstenPage() {
               fontSize: 16.5,
             }}
           >
-            Vier stappen, zonder wachtkamergevoel. Je hoort altijd waar je aan
-            toe bent — ook als het antwoord nee is.
+            {content.stepsLead}
           </p>
           <div
             className="grid-4"
@@ -146,7 +118,7 @@ export default function DienstenPage() {
               gap: 20,
             }}
           >
-            {STEPS.map((s) => (
+            {content.steps.map((s) => (
               <div key={s.n} className="card" style={{ padding: "26px 26px 30px" }}>
                 <p
                   className="serif"
@@ -188,23 +160,22 @@ export default function DienstenPage() {
           }}
         >
           <div>
-            <p className="eyebrow">Financiering</p>
+            <p className="eyebrow">{content.fundingEyebrow}</p>
             <h2
               className="serif"
               style={{ fontSize: 30, fontWeight: 500, margin: "0 0 14px", lineHeight: 1.3 }}
             >
-              Wie betaalt de zorg?
+              {content.fundingTitle}
             </h2>
             <p style={{ margin: 0, color: "var(--muted)", lineHeight: 1.8, fontSize: 16 }}>
-              Weet je niet welke route voor jou geldt? Bel gerust — we zoeken het
-              samen uit en denken mee met de aanvraag.
+              {content.fundingLead}
             </p>
           </div>
           <div
             className="grid-2"
             style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20 }}
           >
-            {FUNDING.map((f) => (
+            {content.funding.map((f) => (
               <div
                 key={f.title}
                 className="card card--sand"
@@ -242,10 +213,10 @@ export default function DienstenPage() {
             className="serif"
             style={{ fontSize: 29, fontWeight: 500, margin: 0, lineHeight: 1.35, maxWidth: "34ch" }}
           >
-            Niet zeker welke vorm past? Bel gerust — we denken vrijblijvend mee.
+            {content.ctaTitle}
           </h2>
-          <Link href="/contact" className="btn btn--light">
-            Stel je vraag
+          <Link href={content.ctaHref} className="btn btn--light">
+            {content.ctaLabel}
           </Link>
         </div>
       </section>

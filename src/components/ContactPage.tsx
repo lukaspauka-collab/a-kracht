@@ -2,66 +2,17 @@
 
 import { useState } from "react";
 import ImageSlot from "./ImageSlot";
+import type { SiteContent } from "@/content/types";
 
-const CONTACT_INFO = [
-  {
-    sw: "sw-sage",
-    color: "var(--sage-strong)",
-    glyph: "✉",
-    label: "E-mail",
-    value: "info@a-kracht.nl",
-    href: "mailto:info@a-kracht.nl",
-  },
-  {
-    sw: "sw-clay",
-    color: "var(--clay)",
-    glyph: "☎",
-    label: "Telefoon",
-    value: "06 – 00 00 00 00",
-    href: "tel:+31600000000",
-  },
-  {
-    sw: "sw-sage",
-    color: "var(--sage-strong)",
-    glyph: "◷",
-    label: "Bereikbaar",
-    value: "Ma t/m vr, 09:00 – 17:00",
-  },
-  {
-    sw: "sw-blue",
-    color: "var(--blue-ink)",
-    glyph: "⌂",
-    label: "Locatie",
-    value: "Delfgauw, Zuid-Holland",
-  },
-];
+type ContactContent = SiteContent["contact"];
 
-const FAQ = [
-  {
-    q: "Is er nu plek?",
-    a: "Het huis heeft negen plekken. Is alles bezet, dan kijken we naar overbruggingszorg of begeleiding thuis tot er ruimte is.",
-  },
-  {
-    q: "Heb ik een indicatie nodig?",
-    a: "Voor wonen wel. Heb je die nog niet, dan helpen we bij de aanvraag bij het CIZ of de gemeente.",
-  },
-  {
-    q: "Kan familie langskomen?",
-    a: "Ja, in overleg met de bewoner. We houden korte lijnen met naasten, met respect voor ieders privacy.",
-  },
-  {
-    q: "Waar kan ik een klacht melden?",
-    a: "Eerst bij Moniek zelf. Kom je er samen niet uit, dan loopt het via de onafhankelijke klachtenregeling van Coöperatie de Delta.",
-    last: true,
-  },
-];
-
-export default function ContactPage() {
+export default function ContactPage({ content }: { content: ContactContent }) {
   const [status, setStatus] = useState("");
+  const faqRows = content.faq;
 
   const onSubmit: React.ComponentProps<"form">["onSubmit"] = (e) => {
     e.preventDefault();
-    setStatus("Bedankt — je bericht is verstuurd.");
+    setStatus(content.formSuccess);
   };
 
   return (
@@ -70,14 +21,13 @@ export default function ContactPage() {
       <section data-reveal style={{ padding: "72px 24px 48px" }}>
         <div className="container" style={{ padding: 0 }}>
           <p className="eyebrow" style={{ margin: "0 0 14px" }}>
-            Contact
+            {content.eyebrow}
           </p>
           <h1 className="page-title" style={{ margin: "0 0 20px", maxWidth: "18ch" }}>
-            Even kennismaken?
+            {content.title}
           </h1>
           <p className="lead" style={{ maxWidth: "56ch" }}>
-            Laat een bericht achter of bel. Je krijgt altijd Moniek zelf aan de
-            lijn — meestal binnen twee werkdagen.
+            {content.lead}
           </p>
         </div>
       </section>
@@ -106,7 +56,7 @@ export default function ContactPage() {
             <div style={{ display: "flex", flexDirection: "column", gap: 22 }}>
               <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
                 <label htmlFor="naam" className="field-label">
-                  Naam
+                  {content.formNameLabel}
                 </label>
                 <input id="naam" name="naam" required className="field" />
               </div>
@@ -120,7 +70,7 @@ export default function ContactPage() {
               >
                 <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
                   <label htmlFor="email" className="field-label">
-                    E-mailadres
+                    {content.formEmailLabel}
                   </label>
                   <input
                     id="email"
@@ -132,9 +82,9 @@ export default function ContactPage() {
                 </div>
                 <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
                   <label htmlFor="tel" className="field-label">
-                    Telefoon{" "}
+                    {content.formPhoneLabel}{" "}
                     <span style={{ color: "var(--muted)", fontWeight: 400 }}>
-                      (optioneel)
+                      {content.formPhoneOptional}
                     </span>
                   </label>
                   <input id="tel" name="telefoon" type="tel" className="field" />
@@ -142,7 +92,7 @@ export default function ContactPage() {
               </div>
               <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
                 <label htmlFor="bericht" className="field-label">
-                  Bericht
+                  {content.formMessageLabel}
                 </label>
                 <textarea
                   id="bericht"
@@ -162,7 +112,7 @@ export default function ContactPage() {
                 }}
               >
                 <button type="submit" className="btn btn--primary" style={{ padding: "14px 28px" }}>
-                  Verstuur bericht
+                  {content.formSubmit}
                 </button>
                 <span
                   aria-live="polite"
@@ -188,10 +138,10 @@ export default function ContactPage() {
                 className="serif"
                 style={{ fontSize: 21, fontWeight: 600, margin: "0 0 22px" }}
               >
-                Contactgegevens
+                {content.infoTitle}
               </h2>
               <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
-                {CONTACT_INFO.map((c) => (
+                {content.infoRows.map((c) => (
                   <div
                     key={c.label}
                     style={{ display: "flex", gap: 14, alignItems: "flex-start" }}
@@ -248,8 +198,8 @@ export default function ContactPage() {
               }}
             >
               <ImageSlot
-                src="/images/straatbeeld.jpg"
-                placeholder="Kaart of straatbeeld Delfgauw"
+                src={content.streetImage.src}
+                placeholder={content.streetImage.placeholder}
               />
             </div>
 
@@ -272,17 +222,16 @@ export default function ContactPage() {
                   marginBottom: 18,
                 }}
               >
-                dD
+                {content.deltaBadgeGlyph}
               </div>
               <h2
                 className="serif"
                 style={{ fontSize: 19, fontWeight: 600, margin: "0 0 10px" }}
               >
-                Coöperatie de Delta
+                {content.deltaTitle}
               </h2>
               <p className="card-text" style={{ fontSize: 15 }}>
-                A-Kracht begeleiding is aangesloten bij de coöperatie. Vragen over
-                kwaliteit, klachten of samenwerking lopen ook via de Delta.
+                {content.deltaText}
               </p>
             </div>
           </div>
@@ -309,26 +258,26 @@ export default function ContactPage() {
           }}
         >
           <div>
-            <p className="eyebrow">Veelgestelde vragen</p>
+            <p className="eyebrow">{content.faqEyebrow}</p>
             <h2
               className="serif"
               style={{ fontSize: 30, fontWeight: 500, margin: "0 0 14px", lineHeight: 1.3 }}
             >
-              Voordat je belt
+              {content.faqTitle}
             </h2>
             <p style={{ margin: 0, color: "var(--muted)", lineHeight: 1.8, fontSize: 16 }}>
-              Staat jouw vraag er niet bij? Stel hem gerust — geen vraag is te
-              klein.
+              {content.faqLead}
             </p>
           </div>
           <div style={{ display: "flex", flexDirection: "column" }}>
-            {FAQ.map((f) => (
+            {faqRows.map((f, i) => (
               <div
                 key={f.q}
                 style={{
                   padding: "22px 0",
                   borderTop: "1px solid var(--border)",
-                  borderBottom: f.last ? "1px solid var(--border)" : undefined,
+                  borderBottom:
+                    i === faqRows.length - 1 ? "1px solid var(--border)" : undefined,
                 }}
               >
                 <h3 className="card-title" style={{ fontSize: 18, margin: "0 0 8px" }}>
