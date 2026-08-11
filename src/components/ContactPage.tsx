@@ -67,7 +67,7 @@ export default function ContactPage() {
   return (
     <div>
       {/* header */}
-      <section data-reveal style={{ padding: "72px 24px 48px" }}>
+      <section data-reveal className="pad-head" style={{ padding: "72px 24px 48px" }}>
         <div className="container" style={{ padding: 0 }}>
           <p className="eyebrow" style={{ margin: "0 0 14px" }}>
             Contact
@@ -83,7 +83,7 @@ export default function ContactPage() {
       </section>
 
       {/* form + info */}
-      <section data-reveal style={{ padding: "0 24px 96px" }}>
+      <section data-reveal className="pad-b" style={{ padding: "0 24px 96px" }}>
         <div
           className="container split"
           style={{
@@ -96,6 +96,7 @@ export default function ContactPage() {
         >
           <form
             onSubmit={onSubmit}
+            className="contact-form"
             style={{
               background: "var(--paper)",
               border: "1px solid var(--border)",
@@ -289,6 +290,7 @@ export default function ContactPage() {
       {/* faq */}
       <section
         data-reveal
+        className="pad-lg"
         style={{
           background: "var(--paper)",
           borderTop: "1px solid var(--border)",

@@ -77,6 +77,7 @@ export default function HomePage({ navigate }: { navigate: NavigateFn }) {
       {/* ============ HERO ============ */}
       <section
         data-reveal
+        className="pad-lg"
         style={{
           position: "relative",
           overflow: "hidden",
@@ -190,7 +191,7 @@ export default function HomePage({ navigate }: { navigate: NavigateFn }) {
                 position: "absolute",
                 top: 26,
                 left: 8,
-                width: 300,
+                width: "min(300px, calc(100% - 16px))",
                 height: 400,
                 border: "1px solid var(--clay)",
                 opacity: 0.45,
@@ -212,7 +213,7 @@ export default function HomePage({ navigate }: { navigate: NavigateFn }) {
             <div
               style={{
                 position: "relative",
-                width: 326,
+                width: "min(326px, 100%)",
                 height: 426,
                 borderRadius: "170px 170px 18px 18px",
                 overflow: "hidden",
@@ -256,6 +257,7 @@ export default function HomePage({ navigate }: { navigate: NavigateFn }) {
       {/* ============ QUOTE ============ */}
       <section
         data-reveal
+        className="pad-lg"
         style={{
           background: "var(--paper)",
           borderTop: "1px solid var(--border)",
@@ -276,7 +278,7 @@ export default function HomePage({ navigate }: { navigate: NavigateFn }) {
             &ldquo;
           </span>
           <p
-            className="serif"
+            className="serif quote-text"
             style={{
               fontSize: 31,
               lineHeight: 1.5,
@@ -303,7 +305,7 @@ export default function HomePage({ navigate }: { navigate: NavigateFn }) {
       </section>
 
       {/* ============ KERNWAARDEN ============ */}
-      <section data-reveal style={{ padding: "92px 24px" }}>
+      <section data-reveal className="pad-lg" style={{ padding: "92px 24px" }}>
         <div className="container" style={{ padding: 0 }}>
           <p className="eyebrow">Kernwaarden</p>
           <h2 className="section-title" style={{ margin: "0 0 46px" }}>
@@ -337,6 +339,7 @@ export default function HomePage({ navigate }: { navigate: NavigateFn }) {
       {/* ============ AANBOD ============ */}
       <section
         data-reveal
+        className="pad-lg"
         style={{
           background: "var(--paper)",
           borderTop: "1px solid var(--border)",
@@ -393,7 +396,7 @@ export default function HomePage({ navigate }: { navigate: NavigateFn }) {
       </section>
 
       {/* ============ RITME ============ */}
-      <section data-reveal style={{ padding: "92px 24px" }}>
+      <section data-reveal className="pad-lg" style={{ padding: "92px 24px" }}>
         <div
           className="container split"
           style={{
@@ -456,6 +459,7 @@ export default function HomePage({ navigate }: { navigate: NavigateFn }) {
       {/* ============ GALLERY ============ */}
       <section
         data-reveal
+        className="pad-b"
         style={{ padding: "0 24px 92px", background: "var(--paper)" }}
       >
         <div className="container" style={{ padding: 0 }}>
@@ -469,6 +473,7 @@ export default function HomePage({ navigate }: { navigate: NavigateFn }) {
             }}
           >
             <div
+              className="gallery-main"
               style={{
                 position: "relative",
                 borderRadius: 18,
@@ -478,6 +483,7 @@ export default function HomePage({ navigate }: { navigate: NavigateFn }) {
               <ImageSlot placeholder="Woonkamer of gevel van het huis" />
             </div>
             <div
+              className="gallery-col"
               style={{
                 display: "grid",
                 gridTemplateRows: "1fr 1fr",
@@ -512,7 +518,7 @@ export default function HomePage({ navigate }: { navigate: NavigateFn }) {
       </section>
 
       {/* ============ VOOR WIE ============ */}
-      <section data-reveal style={{ padding: "92px 24px" }}>
+      <section data-reveal className="pad-lg" style={{ padding: "92px 24px" }}>
         <div className="container" style={{ padding: 0 }}>
           <h2 className="section-title" style={{ margin: "0 0 18px" }}>
             Voor wie is dit huis?
@@ -578,6 +584,7 @@ export default function HomePage({ navigate }: { navigate: NavigateFn }) {
       {/* ============ DELTA BAND ============ */}
       <section
         data-reveal
+        className="pad-lg"
         style={{ background: "var(--sage)", color: "#FCFAF7", padding: "76px 24px" }}
       >
         <div
