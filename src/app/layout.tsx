@@ -4,6 +4,7 @@ import "./globals.css";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import ScrollReveal from "./ScrollReveal";
+import CookieConsent from "@/components/CookieConsent";
 import { SITE } from "@/components/site";
 
 const fraunces = Fraunces({
@@ -72,6 +73,7 @@ export default function RootLayout({
           <SiteHeader />
           <main>{children}</main>
           <SiteFooter />
+          <CookieConsent />
         </div>
         <ScrollReveal />
       </body>
