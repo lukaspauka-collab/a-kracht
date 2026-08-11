@@ -7,7 +7,7 @@ export default function OverPage({ content }: { content: OverContent }) {
   return (
     <div>
       {/* header */}
-      <section data-reveal style={{ padding: "72px 24px 40px" }}>
+      <section data-reveal className="pad-head" style={{ padding: "72px 24px 40px" }}>
         <div className="container" style={{ padding: 0 }}>
           <p className="eyebrow" style={{ margin: "0 0 14px" }}>
             {content.eyebrow}
@@ -43,7 +43,7 @@ export default function OverPage({ content }: { content: OverContent }) {
       </section>
 
       {/* portrait + intro + timeline */}
-      <section data-reveal style={{ padding: "44px 24px 88px" }}>
+      <section data-reveal className="pad-b" style={{ padding: "44px 24px 88px" }}>
         <div
           className="container split"
           style={{
@@ -169,6 +169,7 @@ export default function OverPage({ content }: { content: OverContent }) {
       {/* missie / visie */}
       <section
         data-reveal
+        className="pad-lg"
         style={{
           background: "var(--paper)",
           borderTop: "1px solid var(--border)",
@@ -268,7 +269,7 @@ export default function OverPage({ content }: { content: OverContent }) {
       </section>
 
       {/* hoe ik werk + opleiding */}
-      <section data-reveal style={{ padding: "88px 24px 0" }}>
+      <section data-reveal className="pad-t" style={{ padding: "88px 24px 0" }}>
         <div className="container" style={{ padding: 0 }}>
           <h2 className="section-title" style={{ fontSize: 32, margin: "0 0 18px" }}>
             {content.methodTitle}
@@ -333,7 +334,9 @@ export default function OverPage({ content }: { content: OverContent }) {
                   style={{
                     display: "flex",
                     justifyContent: "space-between",
-                    gap: 24,
+                    gap: 8,
+                    flexWrap: "wrap",
+                    rowGap: 4,
                     padding: "14px 0",
                     borderBottom: "1px solid var(--border)",
                   }}
@@ -350,7 +353,7 @@ export default function OverPage({ content }: { content: OverContent }) {
       </section>
 
       {/* kernwaarden in de praktijk */}
-      <section data-reveal style={{ padding: "88px 24px" }}>
+      <section data-reveal className="pad-lg" style={{ padding: "88px 24px" }}>
         <div className="container" style={{ padding: 0 }}>
           <h2 className="section-title" style={{ fontSize: 32, margin: "0 0 40px" }}>
             {content.practiceTitle}

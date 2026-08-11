@@ -7,7 +7,7 @@ export default function DienstenPage({ content }: { content: DienstenContent }) 
   return (
     <div>
       {/* header */}
-      <section data-reveal style={{ padding: "72px 24px 52px" }}>
+      <section data-reveal className="pad-head" style={{ padding: "72px 24px 52px" }}>
         <div className="container" style={{ padding: 0 }}>
           <p className="eyebrow" style={{ margin: "0 0 14px" }}>
             {content.eyebrow}
@@ -22,7 +22,7 @@ export default function DienstenPage({ content }: { content: DienstenContent }) 
       </section>
 
       {/* service grid */}
-      <section data-reveal style={{ padding: "0 24px 88px" }}>
+      <section data-reveal className="pad-b" style={{ padding: "0 24px 88px" }}>
         <div
           className="container grid-4"
           style={{
@@ -51,9 +51,9 @@ export default function DienstenPage({ content }: { content: DienstenContent }) 
       </section>
 
       {/* toelichting overbruggingszorg */}
-      <section data-reveal style={{ padding: "0 24px 92px" }}>
+      <section data-reveal className="pad-b" style={{ padding: "0 24px 92px" }}>
         <div
-          className="container split"
+          className="container split overbrugging"
           style={{
             background: "var(--paper)",
             border: "1px solid var(--border)",
@@ -94,7 +94,7 @@ export default function DienstenPage({ content }: { content: DienstenContent }) 
       </section>
 
       {/* aanmelding steps */}
-      <section data-reveal style={{ padding: "0 24px 92px" }}>
+      <section data-reveal className="pad-b" style={{ padding: "0 24px 92px" }}>
         <div className="container" style={{ padding: 0 }}>
           <h2 className="section-title" style={{ fontSize: 32, margin: "0 0 18px" }}>
             {content.stepsTitle}
@@ -141,6 +141,7 @@ export default function DienstenPage({ content }: { content: DienstenContent }) 
       {/* financiering */}
       <section
         data-reveal
+        className="pad-lg"
         style={{
           background: "var(--paper)",
           borderTop: "1px solid var(--border)",
@@ -196,6 +197,7 @@ export default function DienstenPage({ content }: { content: DienstenContent }) 
       {/* green CTA band */}
       <section
         data-reveal
+        className="pad-lg"
         style={{ background: "var(--sage)", color: "#FCFAF7", padding: "72px 24px" }}
       >
         <div
