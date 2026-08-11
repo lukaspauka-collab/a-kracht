@@ -1,4 +1,4 @@
-export type Page = "home" | "over" | "diensten" | "contact";
+export type Page = "home" | "over" | "diensten" | "contact" | "privacy";
 
 export type NavigateFn = (page: Page) => void;
 

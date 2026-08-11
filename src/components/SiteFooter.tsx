@@ -64,6 +64,9 @@ export default function SiteFooter({ navigate }: { navigate: NavigateFn }) {
             <a href="#" onClick={go("contact")} className="footer-link">
               Contact
             </a>
+            <a href="#" onClick={go("privacy")} className="footer-link">
+              Privacy & cookies
+            </a>
           </div>
         </div>
       </div>

@@ -7,6 +7,8 @@ import HomePage from "@/components/HomePage";
 import OverPage from "@/components/OverPage";
 import DienstenPage from "@/components/DienstenPage";
 import ContactPage from "@/components/ContactPage";
+import PrivacyPage from "@/components/PrivacyPage";
+import CookieConsent from "@/components/CookieConsent";
 import type { Page } from "@/components/site";
 
 export default function Site() {
@@ -54,8 +56,10 @@ export default function Site() {
         {page === "over" && <OverPage />}
         {page === "diensten" && <DienstenPage navigate={navigate} />}
         {page === "contact" && <ContactPage />}
+        {page === "privacy" && <PrivacyPage />}
       </main>
       <SiteFooter navigate={navigate} />
+      <CookieConsent navigate={navigate} />
     </div>
   );
 }
