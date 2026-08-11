@@ -6,6 +6,7 @@ import SiteFooter from "@/components/SiteFooter";
 import HomePage from "@/components/HomePage";
 import OverPage from "@/components/OverPage";
 import DienstenPage from "@/components/DienstenPage";
+import OrganisatiePage from "@/components/OrganisatiePage";
 import ContactPage from "@/components/ContactPage";
 import type { Page } from "@/components/site";
 
@@ -53,6 +54,7 @@ export default function Site() {
         {page === "home" && <HomePage navigate={navigate} />}
         {page === "over" && <OverPage />}
         {page === "diensten" && <DienstenPage navigate={navigate} />}
+        {page === "organisatie" && <OrganisatiePage navigate={navigate} />}
         {page === "contact" && <ContactPage />}
       </main>
       <SiteFooter navigate={navigate} />
