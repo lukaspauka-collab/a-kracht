@@ -1,4 +1,4 @@
-import type { NavigateFn, Page } from "./site";
+import Link from "next/link";
 
 const CONTACT_ROWS = [
   ["Vestigingsadres", "Delfgauw, Zuid-Holland"],
@@ -110,16 +110,7 @@ const COMMISSIONS = [
   },
 ];
 
-export default function OrganisatiePage({
-  navigate,
-}: {
-  navigate: NavigateFn;
-}) {
-  const go = (target: Page) => (e: React.MouseEvent) => {
-    e.preventDefault();
-    navigate(target);
-  };
-
+export default function OrganisatiePage() {
   return (
     <div>
       {/* header */}
@@ -228,9 +219,9 @@ export default function OrganisatiePage({
             <p style={{ margin: 0, color: "var(--muted)", lineHeight: 1.8, fontSize: 16 }}>
               Alle formele gegevens op een rij. Vragen over de zorgverlening
               stellen kan altijd via de{" "}
-              <a href="#" onClick={go("contact")}>
+              <Link href="/contact">
                 contactpagina
-              </a>
+              </Link>
               .
             </p>
           </div>
@@ -275,9 +266,9 @@ export default function OrganisatiePage({
                 Voor wie en welke zorg
               </h2>
             </div>
-            <a href="#" onClick={go("diensten")} className="link-quiet">
+            <Link href="/diensten" className="link-quiet">
               Bekijk ons aanbod →
-            </a>
+            </Link>
           </div>
           <div
             className="grid-2"
@@ -448,9 +439,9 @@ export default function OrganisatiePage({
             </p>
           </div>
           <div style={{ display: "flex", flexWrap: "wrap", gap: 14 }}>
-            <a href="#" onClick={go("contact")} className="btn btn--light">
+            <Link href="/contact" className="btn btn--light">
               Contactformulier
-            </a>
+            </Link>
             <a
               href="https://www.cooperatiededelta.nl"
               target="_blank"

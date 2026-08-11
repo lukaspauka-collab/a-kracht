@@ -1,44 +1,37 @@
-import { NAV_ITEMS, type NavigateFn, type Page } from "./site";
+"use client";
 
-export default function SiteHeader({
-  page,
-  navigate,
-}: {
-  page: Page;
-  navigate: NavigateFn;
-}) {
-  const go = (target: Page) => (e: React.MouseEvent) => {
-    e.preventDefault();
-    navigate(target);
-  };
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { NAV_ITEMS } from "./site";
+
+export default function SiteHeader() {
+  const pathname = usePathname();
 
   return (
     <header className="header">
       <div className="header-inner">
-        <a href="#" onClick={go("home")} className="brand">
+        <Link href="/" className="brand">
           <span className="brand-name">A-Kracht begeleiding</span>
           <span className="brand-dot" />
-        </a>
+        </Link>
         <nav aria-label="Hoofdnavigatie" className="nav">
           {NAV_ITEMS.map((item) => (
-            <a
+            <Link
               key={item.key}
-              href="#"
-              onClick={go(item.key)}
-              aria-current={page === item.key ? "page" : undefined}
-              className={`nav-link${page === item.key ? " is-active" : ""}`}
+              href={item.href}
+              aria-current={pathname === item.href ? "page" : undefined}
+              className={`nav-link${pathname === item.href ? " is-active" : ""}`}
             >
               {item.label}
-            </a>
+            </Link>
           ))}
-          <a
-            href="#"
-            onClick={go("contact")}
+          <Link
+            href="/contact"
             className="btn btn--primary btn--sm"
             style={{ marginLeft: 14 }}
           >
             Kennismaken
-          </a>
+          </Link>
         </nav>
       </div>
     </header>

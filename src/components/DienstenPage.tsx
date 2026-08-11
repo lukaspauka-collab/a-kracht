@@ -1,4 +1,4 @@
-import type { NavigateFn, Page } from "./site";
+import Link from "next/link";
 
 const SERVICES = [
   { sw: "sw-sage", title: "24-uurszorg", text: "Wonen in het huis met altijd begeleiding aanwezig." },
@@ -25,12 +25,7 @@ const FUNDING = [
   { title: "Zorg in natura", text: "Via de contracten van Coöperatie de Delta." },
 ];
 
-export default function DienstenPage({ navigate }: { navigate: NavigateFn }) {
-  const go = (target: Page) => (e: React.MouseEvent) => {
-    e.preventDefault();
-    navigate(target);
-  };
-
+export default function DienstenPage() {
   return (
     <div>
       {/* header */}
@@ -249,9 +244,9 @@ export default function DienstenPage({ navigate }: { navigate: NavigateFn }) {
           >
             Niet zeker welke vorm past? Bel gerust — we denken vrijblijvend mee.
           </h2>
-          <a href="#" onClick={go("contact")} className="btn btn--light">
+          <Link href="/contact" className="btn btn--light">
             Stel je vraag
-          </a>
+          </Link>
         </div>
       </section>
     </div>
