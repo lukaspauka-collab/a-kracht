@@ -1,5 +1,5 @@
+import Link from "next/link";
 import ImageSlot from "./ImageSlot";
-import type { NavigateFn, Page } from "./site";
 
 const VALUES = [
   {
@@ -66,12 +66,7 @@ const DAY = [
   },
 ];
 
-export default function HomePage({ navigate }: { navigate: NavigateFn }) {
-  const go = (target: Page) => (e: React.MouseEvent) => {
-    e.preventDefault();
-    navigate(target);
-  };
-
+export default function HomePage() {
   return (
     <div>
       {/* ============ HERO ============ */}
@@ -169,12 +164,12 @@ export default function HomePage({ navigate }: { navigate: NavigateFn }) {
               Moniek Zondag.
             </p>
             <div style={{ display: "flex", flexWrap: "wrap", gap: 14 }}>
-              <a href="#" onClick={go("contact")} className="btn btn--primary">
+              <Link href="/contact" className="btn btn--primary">
                 Plan een kennismaking
-              </a>
-              <a href="#" onClick={go("diensten")} className="btn btn--ghost">
+              </Link>
+              <Link href="/diensten" className="btn btn--ghost">
                 Bekijk het aanbod
-              </a>
+              </Link>
             </div>
           </div>
           <div
@@ -358,9 +353,9 @@ export default function HomePage({ navigate }: { navigate: NavigateFn }) {
               <p className="eyebrow">Aanbod</p>
               <h2 className="section-title">Wat wij bieden</h2>
             </div>
-            <a href="#" onClick={go("diensten")} className="link-quiet">
+            <Link href="/diensten" className="link-quiet">
               Alle diensten →
-            </a>
+            </Link>
           </div>
           <div
             className="grid-3"
@@ -616,9 +611,9 @@ export default function HomePage({ navigate }: { navigate: NavigateFn }) {
               kwaliteitstoetsing.
             </p>
           </div>
-          <a href="#" onClick={go("contact")} className="btn btn--light">
+          <Link href="/contact" className="btn btn--light">
             Neem contact op
-          </a>
+          </Link>
         </div>
       </section>
     </div>

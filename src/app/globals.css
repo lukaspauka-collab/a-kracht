@@ -398,12 +398,17 @@ main {
 }
 
 /* ---------- scroll reveal ---------- */
-[data-reveal] {
-  opacity: 0;
-  transform: translateY(22px);
-  transition: opacity 700ms cubic-bezier(0.22, 0.61, 0.36, 1),
-    transform 700ms cubic-bezier(0.22, 0.61, 0.36, 1);
-  will-change: opacity, transform;
+/* The hidden state is gated behind `scripting: enabled` so content stays
+   fully visible for no-JS visitors and crawlers/AI indexers that don't run
+   JavaScript. Browsers with scripting get the fade + rise animation. */
+@media (scripting: enabled) {
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(22px);
+    transition: opacity 700ms cubic-bezier(0.22, 0.61, 0.36, 1),
+      transform 700ms cubic-bezier(0.22, 0.61, 0.36, 1);
+    will-change: opacity, transform;
+  }
 }
 [data-reveal].is-visible {
   opacity: 1;
