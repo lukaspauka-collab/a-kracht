@@ -61,6 +61,9 @@ export default function SiteFooter({ navigate }: { navigate: NavigateFn }) {
             <a href="#" onClick={go("diensten")} className="footer-link">
               Diensten
             </a>
+            <a href="#" onClick={go("organisatie")} className="footer-link">
+              Over de organisatie
+            </a>
             <a href="#" onClick={go("contact")} className="footer-link">
               Contact
             </a>
@@ -69,6 +72,13 @@ export default function SiteFooter({ navigate }: { navigate: NavigateFn }) {
       </div>
       <div className="footer-bottom container">
         <span>© 2026 A-Kracht begeleiding</span>
+        <a
+          href="#"
+          onClick={go("organisatie")}
+          style={{ color: "var(--muted)", textDecoration: "none" }}
+        >
+          Privacy &amp; klachten
+        </a>
         <span>Onderdeel van Coöperatie de Delta</span>
       </div>
     </footer>
