@@ -1,10 +1,10 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useRef } from "react";
 import { setConsent, useConsent } from "./consent";
-import type { NavigateFn } from "./site";
 
-export default function CookieConsent({ navigate }: { navigate: NavigateFn }) {
+export default function CookieConsent() {
   const consent = useConsent();
   const acceptRef = useRef<HTMLButtonElement>(null);
 
@@ -33,10 +33,8 @@ export default function CookieConsent({ navigate }: { navigate: NavigateFn }) {
     setConsent({ preferences: false, analytics: false, marketing: false });
   };
 
-  const goPrivacy = (e: React.MouseEvent) => {
-    e.preventDefault();
+  const goPrivacy = () => {
     setConsent({ preferences: false, analytics: false, marketing: false });
-    navigate("privacy");
   };
 
   return (
@@ -55,9 +53,9 @@ export default function CookieConsent({ navigate }: { navigate: NavigateFn }) {
           geen tracking- of marketingcookies geplaatst. Wil je later wel
           voorkeuren en statistieken toestaan, dan kan dat.
         </p>
-        <a href="#" onClick={goPrivacy} className="cookie-consent__link">
+        <Link href="/privacy" onClick={goPrivacy} className="cookie-consent__link">
           Lees ons cookie- en privacybeleid
-        </a>
+        </Link>
       </div>
       <div className="cookie-consent__actions">
         <button ref={acceptRef} onClick={accept} className="btn btn--primary">

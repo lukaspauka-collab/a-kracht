@@ -14,11 +14,35 @@
 type ImageSlotProps = {
   /** Empty-state caption shown under the icon. */
   placeholder?: string;
+  /** When set, renders a real image filling the frame instead of the empty state. */
+  src?: string;
+  /** Accessible name; falls back to the placeholder caption. */
+  alt?: string;
 };
 
 export default function ImageSlot({
   placeholder = "Drop an image",
+  src,
+  alt,
 }: ImageSlotProps) {
+  if (src) {
+    return (
+      <img
+        src={src}
+        alt={alt ?? placeholder}
+        style={{
+          position: "absolute",
+          inset: 0,
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+          display: "block",
+        }}
+        loading="lazy"
+      />
+    );
+  }
+
   return (
     <div className="image-slot" role="img" aria-label={placeholder}>
       <svg

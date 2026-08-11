@@ -1,65 +1,67 @@
-"use client";
-
-import { useCallback, useEffect, useState } from "react";
-import SiteHeader from "@/components/SiteHeader";
-import SiteFooter from "@/components/SiteFooter";
+import type { Metadata } from "next";
 import HomePage from "@/components/HomePage";
-import OverPage from "@/components/OverPage";
-import DienstenPage from "@/components/DienstenPage";
-import ContactPage from "@/components/ContactPage";
-import PrivacyPage from "@/components/PrivacyPage";
-import CookieConsent from "@/components/CookieConsent";
-import type { Page } from "@/components/site";
+import JsonLd from "./jsonld";
 
-export default function Site() {
-  const [page, setPage] = useState<Page>("home");
+export const metadata: Metadata = {
+  title: "Kleinschalige begeleiding bij autisme",
+  description:
+    "Een klein, huiselijk huis in Delfgauw voor negen bewoners. Kleinschalige 24-uurszorg en overbruggingszorg voor mensen met autisme. Opgezet en geleid door Moniek Zondag.",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "A-Kracht begeleiding — Kleinschalige begeleiding bij autisme",
+    description:
+      "Een klein, huiselijk huis in Delfgauw voor negen bewoners. 24-uurszorg en overbruggingszorg voor mensen met autisme.",
+  },
+};
 
-  const navigate = useCallback((next: Page) => {
-    setPage(next);
-    window.scrollTo(0, 0);
-  }, []);
-
-  // Scroll-reveal: fade + rise each [data-reveal] section into view as it
-  // enters the viewport. Re-runs whenever the active page changes so the new
-  // page's sections animate in. Mirrors the original design's IntersectionObserver.
-  useEffect(() => {
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const els = Array.from(
-      document.querySelectorAll<HTMLElement>("[data-reveal]"),
-    );
-
-    if (reduce) {
-      els.forEach((el) => el.classList.add("is-visible"));
-      return;
-    }
-
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          entry.target.classList.add("is-visible");
-          io.unobserve(entry.target);
-        });
-      },
-      { rootMargin: "0px 0px -8% 0px", threshold: 0.05 },
-    );
-
-    els.forEach((el) => io.observe(el));
-    return () => io.disconnect();
-  }, [page]);
+export default function Home() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": ["Organization", "LocalBusiness"],
+    "@id": "https://a-kracht.nl/#organization",
+    name: "A-Kracht begeleiding",
+    url: "https://a-kracht.nl",
+    logo: "https://a-kracht.nl/favicon.ico",
+    description:
+      "Kleinschalige 24-uurszorg en overbruggingszorg voor mensen met autisme in Delfgauw. Een huis voor negen bewoners, opgezet en geleid door Moniek Zondag.",
+    email: "info@a-kracht.nl",
+    telephone: "+31600000000",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Delfgauw",
+      addressRegion: "Zuid-Holland",
+      addressCountry: "NL",
+    },
+    areaServed: {
+      "@type": "Place",
+      name: "Delfgauw en omgeving",
+    },
+    founder: {
+      "@type": "Person",
+      name: "Moniek Zondag",
+      url: "https://a-kracht.nl/over",
+    },
+    parentOrganization: {
+      "@type": "Organization",
+      name: "Coöperatie de Delta",
+    },
+    knowsAbout: [
+      "autisme",
+      "autismespectrumstoornis",
+      "24-uurszorg",
+      "overbruggingszorg",
+      "begeleid wonen",
+      "Wlz",
+      "Wmo",
+    ],
+  };
 
   return (
-    <div className="site">
-      <SiteHeader page={page} navigate={navigate} />
-      <main>
-        {page === "home" && <HomePage navigate={navigate} />}
-        {page === "over" && <OverPage />}
-        {page === "diensten" && <DienstenPage navigate={navigate} />}
-        {page === "contact" && <ContactPage />}
-        {page === "privacy" && <PrivacyPage />}
-      </main>
-      <SiteFooter navigate={navigate} />
-      <CookieConsent navigate={navigate} />
-    </div>
+    <>
+      <JsonLd data={jsonLd} />
+      <HomePage />
+    </>
   );
 }
