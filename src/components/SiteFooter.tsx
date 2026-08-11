@@ -10,7 +10,7 @@ export default function SiteFooter() {
           display: "grid",
           gridTemplateColumns: "1.3fr 1fr 1fr",
           gap: 48,
-          padding: "0 24px",
+          padding: 0,
         }}
       >
         <div>

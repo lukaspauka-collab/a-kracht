@@ -116,7 +116,7 @@ export default function OverPage() {
   return (
     <div>
       {/* header */}
-      <section data-reveal style={{ padding: "72px 24px 40px" }}>
+      <section data-reveal className="pad-head" style={{ padding: "72px 24px 40px" }}>
         <div className="container" style={{ padding: 0 }}>
           <p className="eyebrow" style={{ margin: "0 0 14px" }}>
             Over mij
@@ -152,7 +152,7 @@ export default function OverPage() {
       </section>
 
       {/* portrait + intro + timeline */}
-      <section data-reveal style={{ padding: "44px 24px 88px" }}>
+      <section data-reveal className="pad-b" style={{ padding: "44px 24px 88px" }}>
         <div
           className="container split"
           style={{
@@ -286,6 +286,7 @@ export default function OverPage() {
       {/* missie / visie */}
       <section
         data-reveal
+        className="pad-lg"
         style={{
           background: "var(--paper)",
           borderTop: "1px solid var(--border)",
@@ -391,7 +392,7 @@ export default function OverPage() {
       </section>
 
       {/* hoe ik werk + opleiding */}
-      <section data-reveal style={{ padding: "88px 24px 0" }}>
+      <section data-reveal className="pad-t" style={{ padding: "88px 24px 0" }}>
         <div className="container" style={{ padding: 0 }}>
           <h2 className="section-title" style={{ fontSize: 32, margin: "0 0 18px" }}>
             Hoe ik werk
@@ -457,7 +458,9 @@ export default function OverPage() {
                   style={{
                     display: "flex",
                     justifyContent: "space-between",
-                    gap: 24,
+                    gap: 8,
+                    flexWrap: "wrap",
+                    rowGap: 4,
                     padding: "14px 0",
                     borderBottom: "1px solid var(--border)",
                   }}
@@ -474,7 +477,7 @@ export default function OverPage() {
       </section>
 
       {/* kernwaarden in de praktijk */}
-      <section data-reveal style={{ padding: "88px 24px" }}>
+      <section data-reveal className="pad-lg" style={{ padding: "88px 24px" }}>
         <div className="container" style={{ padding: 0 }}>
           <h2 className="section-title" style={{ fontSize: 32, margin: "0 0 40px" }}>
             Kernwaarden in de praktijk
