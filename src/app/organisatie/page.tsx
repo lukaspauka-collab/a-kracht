@@ -46,7 +46,7 @@ export default async function Organisatie() {
   return (
     <>
       <JsonLd data={jsonLd} />
-      <OrganisatiePage content={content.organisatie} />
+      <OrganisatiePage content={content.organisatie} site={s} />
     </>
   );
 }

@@ -1,13 +1,24 @@
 import Link from "next/link";
+import { resolveRow } from "@/content/fields";
 import type { SiteContent } from "@/content/types";
 
 type OrganisatieContent = SiteContent["organisatie"];
+type Site = SiteContent["site"];
 
 export default function OrganisatiePage({
   content,
+  site,
 }: {
   content: OrganisatieContent;
+  site: Site;
 }) {
+  // Address, phone and e-mail are the site-wide ones; the rest (KvK, AGB) are
+  // specific to this table.
+  const dataRows = content.dataRows.map((row) => ({
+    label: row.label,
+    ...resolveRow(site, row),
+  }));
+
   return (
     <div>
       {/* header */}
@@ -113,7 +124,7 @@ export default function OrganisatiePage({
             </p>
           </div>
           <div style={{ display: "flex", flexDirection: "column" }}>
-            {content.dataRows.map((row) => (
+            {dataRows.map((row) => (
               <div
                 key={row.label}
                 style={{

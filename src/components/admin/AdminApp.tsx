@@ -2,7 +2,8 @@
 
 import { useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
-import type { SiteContent } from "@/content/types";
+import { SITE_FIELD_LABELS, isSiteField, resolveSiteField } from "@/content/fields";
+import type { SiteContent, SiteField } from "@/content/types";
 
 type Json = unknown;
 
@@ -149,6 +150,7 @@ export default function AdminApp({
             value={content as Json}
             path={[]}
             images={images}
+            site={content.site}
             onUpload={upload}
             onChange={update}
           />
@@ -164,11 +166,13 @@ type EditorProps = {
   value: Json;
   path: (string | number)[];
   images: string[];
+  /** The live site block, for rows that show a site-wide contact detail. */
+  site: SiteContent["site"];
   onUpload: (file: File) => Promise<string>;
   onChange: (path: (string | number)[], value: Json) => void;
 };
 
-function ContentEditor({ value, path, images, onUpload, onChange }: EditorProps) {
+function ContentEditor({ value, path, images, site, onUpload, onChange }: EditorProps) {
   if (typeof value === "boolean") {
     return (
       <label className="admin-field admin-field--check">
@@ -203,11 +207,11 @@ function ContentEditor({ value, path, images, onUpload, onChange }: EditorProps)
     if (value.length === 0 || typeof value[0] === "string") {
       return <ListField value={value as string[]} path={path} onChange={onChange} />;
     }
-    return <ObjectArrayField value={value} path={path} images={images} onUpload={onUpload} onChange={onChange} />;
+    return <ObjectArrayField value={value} path={path} images={images} site={site} onUpload={onUpload} onChange={onChange} />;
   }
 
   if (isObj(value)) {
-    return <ObjectGroup value={value} path={path} images={images} onUpload={onUpload} onChange={onChange} />;
+    return <ObjectGroup value={value} path={path} images={images} site={site} onUpload={onUpload} onChange={onChange} />;
   }
 
   return null;
@@ -273,12 +277,14 @@ function ObjectArrayField({
   value,
   path,
   images,
+  site,
   onUpload,
   onChange,
 }: {
   value: Json[];
   path: (string | number)[];
   images: string[];
+  site: EditorProps["site"];
   onUpload: EditorProps["onUpload"];
   onChange: EditorProps["onChange"];
 }) {
@@ -319,6 +325,7 @@ function ObjectArrayField({
               value={item}
               path={[...path, i]}
               images={images}
+              site={site}
               onUpload={onUpload}
               onChange={onChange}
             />
@@ -333,18 +340,27 @@ function ObjectGroup({
   value,
   path,
   images,
+  site,
   onUpload,
   onChange,
 }: {
   value: Record<string, Json>;
   path: (string | number)[];
   images: string[];
+  site: EditorProps["site"];
   onUpload: EditorProps["onUpload"];
   onChange: EditorProps["onChange"];
 }) {
-  const keys = Object.keys(value);
   const isSection = path.length === 1;
   const name = String(path[path.length - 1]);
+
+  // A row that shows a site-wide detail. Its own `value`/`href` are ignored by
+  // the site, and older saved content still carries them — editing those boxes
+  // would change nothing, so show the linked value instead of them.
+  const linkedField = isSiteField(value.field) ? value.field : null;
+  const keys = Object.keys(value).filter(
+    (k) => !(linkedField && (k === "value" || k === "href"))
+  );
 
   return (
     <section id={isSection ? `section-${name}` : undefined} className="admin-section">
@@ -367,12 +383,16 @@ function ObjectGroup({
               />
             );
           }
+          if (k === "field" && linkedField) {
+            return <LinkedField key={k} field={linkedField} site={site} />;
+          }
           return (
             <ContentEditor
               key={k}
               value={childValue}
               path={childPath}
               images={images}
+              site={site}
               onUpload={onUpload}
               onChange={onChange}
             />
@@ -380,6 +400,29 @@ function ObjectGroup({
         })}
       </div>
     </section>
+  );
+}
+
+/**
+ * A row whose value is the site-wide one. Read-only on purpose: the point is
+ * that there is one place to change a phone number, and this shows both what
+ * will appear and where to go and change it.
+ */
+function LinkedField({
+  field,
+  site,
+}: {
+  field: SiteField;
+  site: EditorProps["site"];
+}) {
+  const { value } = resolveSiteField(site, field);
+  return (
+    <FieldShell
+      label={SITE_FIELD_LABELS[field]}
+      hint="Overgenomen uit Site & contact — pas het daar aan, dan verandert het op elke pagina."
+    >
+      <input className="admin-input" value={value} readOnly disabled />
+    </FieldShell>
   );
 }
 

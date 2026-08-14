@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import ContactPage from "@/components/ContactPage";
 import JsonLd from "../jsonld";
 import { getContent } from "@/content/lib";
+import { resolveRow } from "@/content/fields";
 
 export const dynamic = "force-dynamic";
 
@@ -56,7 +57,20 @@ export default async function Contact() {
   return (
     <>
       <JsonLd data={jsonLd} />
-      <ContactPage content={content.contact} />
+      <ContactPage
+        content={{
+          ...content.contact,
+          // Phone, e-mail, hours and location live under "Site & contact", so
+          // the card here and the footer can't drift apart.
+          infoRows: content.contact.infoRows.map(({ sw, color, glyph, label, ...row }) => ({
+            sw,
+            color,
+            glyph,
+            label,
+            ...resolveRow(s, { label, ...row }),
+          })),
+        }}
+      />
     </>
   );
 }

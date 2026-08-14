@@ -6,6 +6,7 @@
     "email": "info@a-kracht.nl",
     "phone": "+31600000000",
     "phoneDisplay": "06 – 00 00 00 00",
+    "hours": "Ma t/m vr, 09:00 – 17:00",
     "locality": "Delfgauw",
     "region": "Zuid-Holland",
     "country": "NL",
@@ -435,15 +436,15 @@
     "dataRows": [
       {
         "label": "Vestigingsadres",
-        "value": "Delfgauw, Zuid-Holland"
+        "field": "location"
       },
       {
         "label": "Telefoon",
-        "value": "06 – 00 00 00 00"
+        "field": "phone"
       },
       {
         "label": "E-mailadres",
-        "value": "info@a-kracht.nl"
+        "field": "email"
       },
       {
         "label": "KvK-nummer",
@@ -607,32 +608,28 @@
         "color": "var(--sage-strong)",
         "glyph": "✉",
         "label": "E-mail",
-        "value": "info@a-kracht.nl",
-        "href": "mailto:info@a-kracht.nl"
+        "field": "email"
       },
       {
         "sw": "sw-clay",
         "color": "var(--clay)",
         "glyph": "☎",
         "label": "Telefoon",
-        "value": "06 – 00 00 00 00",
-        "href": "tel:+31600000000"
+        "field": "phone"
       },
       {
         "sw": "sw-sage",
         "color": "var(--sage-strong)",
         "glyph": "◷",
         "label": "Bereikbaar",
-        "value": "Ma t/m vr, 09:00 – 17:00",
-        "href": ""
+        "field": "hours"
       },
       {
         "sw": "sw-blue",
         "color": "var(--blue-ink)",
         "glyph": "⌂",
         "label": "Locatie",
-        "value": "Delfgauw, Zuid-Holland",
-        "href": ""
+        "field": "location"
       }
     ],
     "streetImage": {
