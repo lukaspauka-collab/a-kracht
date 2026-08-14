@@ -20,6 +20,9 @@
 # production
 /build
 
+# content saved by the admin editor during local development
+/.data
+
 # misc
 .DS_Store
 *.pem
