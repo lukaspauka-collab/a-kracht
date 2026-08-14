@@ -4,11 +4,26 @@ import { useState } from "react";
 import ImageSlot from "./ImageSlot";
 import type { SiteContent } from "@/content/types";
 
-type ContactContent = SiteContent["contact"];
+/**
+ * The info rows arrive already resolved against `site` — see the contact route.
+ * Resolving on the server keeps the site-wide details in one place and keeps
+ * the superseded values out of the payload sent to the browser.
+ */
+type ContactContent = Omit<SiteContent["contact"], "infoRows"> & {
+  infoRows: {
+    sw: string;
+    color: string;
+    glyph: string;
+    label: string;
+    value: string;
+    href: string;
+  }[];
+};
 
 export default function ContactPage({ content }: { content: ContactContent }) {
   const [status, setStatus] = useState("");
   const faqRows = content.faq;
+  const infoRows = content.infoRows;
 
   const onSubmit: React.ComponentProps<"form">["onSubmit"] = (e) => {
     e.preventDefault();
@@ -142,7 +157,7 @@ export default function ContactPage({ content }: { content: ContactContent }) {
                 {content.infoTitle}
               </h2>
               <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
-                {content.infoRows.map((c) => (
+                {infoRows.map((c) => (
                   <div
                     key={c.label}
                     style={{ display: "flex", gap: 14, alignItems: "flex-start" }}

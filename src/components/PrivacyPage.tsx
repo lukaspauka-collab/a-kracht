@@ -8,7 +8,12 @@ const COOKIE_TABLE = [
   },
 ];
 
-const SECTIONS = [
+/**
+ * The e-mail address is threaded through rather than written out: it is a
+ * site-wide detail owned by "Site & contact" in the admin, and a privacy
+ * statement naming a dead address is worse than most stale copy.
+ */
+const sections = (email: string) => [
   {
     h: "1. Cookies op deze website",
     body: [
@@ -38,13 +43,15 @@ const SECTIONS = [
   {
     h: "5. Uw rechten",
     body: [
-      "Je hebt het recht op inzage, correctie en verwijdering van je gegevens, het recht op beperking van de verwerking, en het recht om je toestemming op elk moment in te trekken. Stuur daarvoor een e-mail naar info@a-kracht.nl. We reageren binnen vier weken.",
+      `Je hebt het recht op inzage, correctie en verwijdering van je gegevens, het recht op beperking van de verwerking, en het recht om je toestemming op elk moment in te trekken. Stuur daarvoor een e-mail naar ${email}. We reageren binnen vier weken.`,
       "Vind je de afhandeling niet juist, dan kun je een klacht indienen bij de Autoriteit Persoonsgegevens (autoriteitpersoonsgegevens.nl).",
     ],
   },
 ];
 
-export default function PrivacyPage() {
+export default function PrivacyPage({ email }: { email: string }) {
+  const SECTIONS = sections(email);
+
   return (
     <div>
       <section data-reveal style={{ padding: "72px 24px 48px" }}>
@@ -150,8 +157,8 @@ export default function PrivacyPage() {
             </h2>
             <p className="card-text" style={{ fontSize: 15 }}>
               Neem contact op met Moniek Zondag via{" "}
-              <a href="mailto:info@a-kracht.nl" style={{ textDecoration: "none" }}>
-                info@a-kracht.nl
+              <a href={`mailto:${email}`} style={{ textDecoration: "none" }}>
+                {email}
               </a>
               . Laatste wijziging: augustus 2026.
             </p>

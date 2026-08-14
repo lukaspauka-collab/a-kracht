@@ -31,13 +31,28 @@ export interface FaqRow {
   a: string;
 }
 
-export interface ContactInfoRow {
+/**
+ * A contact detail that lives once, under `site`, and is shown in several
+ * places. Rows that carry a `field` take their value from there instead of
+ * repeating it, so editing "Site & contact" updates every page at once.
+ */
+export type SiteField = "email" | "phone" | "hours" | "location";
+
+/**
+ * A row in a details list. Either it points at a site-wide detail via `field`,
+ * or it carries its own `value` (and optional `href`) — never both.
+ */
+export interface DetailRow {
+  label: string;
+  field?: SiteField;
+  value?: string;
+  href?: string;
+}
+
+export interface ContactInfoRow extends DetailRow {
   sw: string;
   color: string;
   glyph: string;
-  label: string;
-  value: string;
-  href: string;
 }
 
 export interface TimelineRow {
@@ -90,6 +105,8 @@ export interface SiteContent {
     email: string;
     phone: string;
     phoneDisplay: string;
+    /** Opening hours, as shown on the contact page. */
+    hours: string;
     locality: string;
     region: string;
     country: string;
@@ -197,7 +214,7 @@ export interface SiteContent {
     dataEyebrow: string;
     dataTitle: string;
     dataLead: string;
-    dataRows: { label: string; value: string }[];
+    dataRows: DetailRow[];
     offerEyebrow: string;
     offerTitle: string;
     offerLinkLabel: string;
