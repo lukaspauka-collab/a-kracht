@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import HomePage from "@/components/HomePage";
 import JsonLd from "./jsonld";
 import { getContent } from "@/content/lib";
+import { telHref } from "@/content/fields";
 
 export const dynamic = "force-dynamic";
 
@@ -32,7 +33,7 @@ export default async function Home() {
     logo: `${s.url}/favicon.ico`,
     description: s.description,
     email: s.email,
-    telephone: s.phone,
+    telephone: telHref(s.phoneDisplay),
     address: {
       "@type": "PostalAddress",
       addressLocality: s.locality,

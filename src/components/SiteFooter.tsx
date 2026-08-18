@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { telHref } from "@/content/fields";
 
 type NavItem = { label: string; href: string };
 
@@ -10,7 +11,6 @@ export default function SiteFooter({
     name: string;
     footerTagline: string;
     email: string;
-    phone: string;
     phoneDisplay: string;
     locality: string;
     region: string;
@@ -55,7 +55,7 @@ export default function SiteFooter({
             <a href={`mailto:${site.email}`} className="footer-link">
               {site.email}
             </a>
-            <a href={`tel:${site.phone}`} className="footer-link">
+            <a href={`tel:${telHref(site.phoneDisplay)}`} className="footer-link">
               {site.phoneDisplay}
             </a>
             <span style={{ color: "var(--muted)" }}>
