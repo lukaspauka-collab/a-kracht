@@ -103,7 +103,10 @@ export interface SiteContent {
     url: string;
     description: string;
     email: string;
-    phone: string;
+    /**
+     * The number as written on the page. The dialable `tel:` form is derived
+     * from it — see `telHref` — so there is only one field to keep current.
+     */
     phoneDisplay: string;
     /** Opening hours, as shown on the contact page. */
     hours: string;

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import OrganisatiePage from "@/components/OrganisatiePage";
 import JsonLd from "../jsonld";
 import { getContent } from "@/content/lib";
+import { telHref } from "@/content/fields";
 
 export const dynamic = "force-dynamic";
 
@@ -32,7 +33,7 @@ export default async function Organisatie() {
         name: s.name,
         url: s.url,
         email: s.email,
-        telephone: s.phone,
+        telephone: telHref(s.phoneDisplay),
         parentOrganization: { "@type": "Organization", name: s.parentOrganization },
       },
       {

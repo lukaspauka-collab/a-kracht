@@ -20,6 +20,31 @@ import type { DetailRow, SiteContent, SiteField } from "./types";
 
 type Site = SiteContent["site"];
 
+/**
+ * The dialable form of a written-out Dutch phone number.
+ *
+ * The number used to be stored twice — once pretty (`phoneDisplay`) and once
+ * dialable (`phone`) — and the admin showed both as plain text boxes. Editing
+ * the pretty one and leaving the other behind produced a page that displayed
+ * the real number while `tel:` links and the `telephone` in the structured data
+ * still pointed at the placeholder. Deriving one from the other removes the
+ * chance to update half of it.
+ *
+ * `06 – 14 78 05 98` → `+31614780598`. Numbers already in international form
+ * are passed through, so a `+32`/`00 32` number keeps its own country code.
+ */
+export function telHref(display: string): string {
+  const trimmed = display.trim();
+  const digits = trimmed.replace(/\D/g, "");
+  if (!digits) return "";
+  if (trimmed.startsWith("+")) return `+${digits}`;
+  // `00` is the international prefix as dialled from the Netherlands.
+  if (digits.startsWith("00")) return `+${digits.slice(2)}`;
+  // A national number: drop the trunk `0` and add the country code.
+  if (digits.startsWith("0")) return `+31${digits.slice(1)}`;
+  return `+31${digits}`;
+}
+
 /** What the editor is told a linked row is showing, and where to change it. */
 export const SITE_FIELD_LABELS: Record<SiteField, string> = {
   email: "E-mailadres",
@@ -42,12 +67,10 @@ export function resolveSiteField(
   switch (field) {
     case "email":
       return { value: site.email, href: site.email ? `mailto:${site.email}` : "" };
-    case "phone":
-      return {
-        value: site.phoneDisplay,
-        // The dialable number is a separate field from the pretty one.
-        href: site.phone ? `tel:${site.phone}` : "",
-      };
+    case "phone": {
+      const tel = telHref(site.phoneDisplay);
+      return { value: site.phoneDisplay, href: tel ? `tel:${tel}` : "" };
+    }
     case "hours":
       return { value: site.hours, href: "" };
     case "location":

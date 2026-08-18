@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import ContactPage from "@/components/ContactPage";
 import JsonLd from "../jsonld";
 import { getContent } from "@/content/lib";
-import { resolveRow } from "@/content/fields";
+import { resolveRow, telHref } from "@/content/fields";
 
 export const dynamic = "force-dynamic";
 
@@ -48,7 +48,7 @@ export default async function Contact() {
           "@type": "Organization",
           name: s.name,
           email: s.email,
-          telephone: s.phone,
+          telephone: telHref(s.phoneDisplay),
         },
       },
     ],
