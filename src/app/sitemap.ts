@@ -13,10 +13,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   });
   return [
     entry("/", 1, "monthly"),
-    entry("/over", 0.8, "yearly"),
     entry("/diensten", 0.9, "monthly"),
+    entry("/over", 0.8, "yearly"),
+    entry("/contact", 0.7, "monthly"),
     entry("/organisatie", 0.6, "yearly"),
-    entry("/contact", 0.7, "yearly"),
-    entry("/privacy", 0.5, "yearly"),
+    entry("/privacy", 0.3, "yearly"),
   ];
 }

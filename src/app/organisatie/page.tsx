@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import OrganisatiePage from "@/components/OrganisatiePage";
 import JsonLd from "../jsonld";
+import BreadcrumbJsonLd from "../BreadcrumbJsonLd";
 import { getContent } from "@/content/lib";
 import { telHref } from "@/content/fields";
 
@@ -9,14 +10,16 @@ export const dynamic = "force-dynamic";
 export async function generateMetadata(): Promise<Metadata> {
   const s = (await getContent()).site;
   return {
-    title: "Over de organisatie",
-    description: s.description,
+    title: `Organisatie en kwaliteit`,
+    description:
+      `${s.name}: kleinschalige zorg voor mensen met autisme, onderdeel van ${s.parentOrganization}. Kwaliteit, transparantie en professionele begeleiding.`,
     alternates: {
       canonical: "/organisatie",
     },
     openGraph: {
-      title: `Over de organisatie — ${s.name}`,
-      description: s.description,
+      title: `Organisatie — ${s.name}`,
+      description:
+        `Lees over ${s.name}: onze kwaliteit, het team en de organisatie achter kleinschalige autismezorg in Delfgauw.`,
     },
   };
 }
@@ -47,6 +50,7 @@ export default async function Organisatie() {
   return (
     <>
       <JsonLd data={jsonLd} />
+      <BreadcrumbJsonLd path="/organisatie" />
       <OrganisatiePage content={content.organisatie} site={s} />
     </>
   );

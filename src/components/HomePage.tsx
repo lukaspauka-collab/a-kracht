@@ -149,6 +149,7 @@ export default function HomePage({ content }: { content: HomeContent }) {
               <ImageSlot
                 src={content.heroImage.src}
                 placeholder={content.heroImage.placeholder}
+                priority
               />
             </div>
           </div>
