@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import ContactPage from "@/components/ContactPage";
 import JsonLd from "../jsonld";
+import BreadcrumbJsonLd from "../BreadcrumbJsonLd";
 import { getContent } from "@/content/lib";
 import { resolveRow, telHref } from "@/content/fields";
 
@@ -9,14 +10,16 @@ export const dynamic = "force-dynamic";
 export async function generateMetadata(): Promise<Metadata> {
   const s = (await getContent()).site;
   return {
-    title: "Contact en veelgestelde vragen",
-    description: s.description,
+    title: `Contact en veelgestelde vragen`,
+    description:
+      `Neem contact op met ${s.name} voor vragen over begeleiding bij autisme. Veelgestelde vragen, bereikbaarheid en locatie in Delfgauw.`,
     alternates: {
       canonical: "/contact",
     },
     openGraph: {
       title: `Contact — ${s.name}`,
-      description: s.description,
+      description:
+        `Vragen over autismezorg? Neem contact op met ${s.name} in Delfgauw. Bereikbaar op werkdagen.`,
     },
   };
 }
@@ -57,6 +60,7 @@ export default async function Contact() {
   return (
     <>
       <JsonLd data={jsonLd} />
+      <BreadcrumbJsonLd path="/contact" />
       <ContactPage
         content={{
           ...content.contact,

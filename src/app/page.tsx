@@ -9,14 +9,16 @@ export const dynamic = "force-dynamic";
 export async function generateMetadata(): Promise<Metadata> {
   const s = (await getContent()).site;
   return {
-    title: "Kleinschalige begeleiding bij autisme",
-    description: s.description,
+    title: "Kleinschalige 24-uurszorg bij autisme | A-Kracht begeleiding",
+    description:
+      "A-Kracht begeleiding: kleinschalige 24-uurszorg en overbruggingszorg voor mensen met autisme in Delfgauw. Begeleid wonen met professionele ondersteuning.",
     alternates: {
       canonical: "/",
     },
     openGraph: {
-      title: `${s.name} — Kleinschalige begeleiding bij autisme`,
-      description: s.description,
+      title: `${s.name} — Kleinschalige 24-uurszorg bij autisme`,
+      description:
+        "Kleinschalige 24-uurszorg en overbruggingszorg voor mensen met autisme in Delfgauw. Een huis voor negen bewoners.",
     },
   };
 }
@@ -52,6 +54,14 @@ export default async function Home() {
     parentOrganization: {
       "@type": "Organization",
       name: s.parentOrganization,
+    },
+    sameAs: content.over.linkedinHref ? [content.over.linkedinHref] : [],
+    contactPoint: {
+      "@type": "ContactPoint",
+      contactType: "customer service",
+      email: s.email,
+      telephone: telHref(s.phoneDisplay),
+      availableLanguage: "nl",
     },
     knowsAbout: [
       "autisme",

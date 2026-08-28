@@ -18,12 +18,15 @@ type ImageSlotProps = {
   src?: string;
   /** Accessible name; falls back to the placeholder caption. */
   alt?: string;
+  /** Load eagerly with high fetch priority. Use for the LCP (hero) image only. */
+  priority?: boolean;
 };
 
 export default function ImageSlot({
   placeholder = "Drop an image",
   src,
   alt,
+  priority = false,
 }: ImageSlotProps) {
   if (src) {
     return (
@@ -38,7 +41,8 @@ export default function ImageSlot({
           objectFit: "cover",
           display: "block",
         }}
-        loading="lazy"
+        loading={priority ? "eager" : "lazy"}
+        fetchPriority={priority ? "high" : "auto"}
       />
     );
   }
