@@ -9,14 +9,14 @@ export const dynamic = "force-dynamic";
 export async function generateMetadata(): Promise<Metadata> {
   const s = (await getContent()).site;
   return {
-    title: "Kleinschalige 24-uurszorg bij autisme | A-Kracht begeleiding",
+    title: "A-Kracht begeleiding | Kleinschalige 24-uurszorg bij autisme",
     description:
       "A-Kracht begeleiding: kleinschalige 24-uurszorg en overbruggingszorg voor mensen met autisme in Delfgauw. Begeleid wonen met professionele ondersteuning.",
     alternates: {
       canonical: "/",
     },
     openGraph: {
-      title: `${s.name} — Kleinschalige 24-uurszorg bij autisme`,
+      title: `${s.name} | Kleinschalige 24-uurszorg bij autisme`,
       description:
         "Kleinschalige 24-uurszorg en overbruggingszorg voor mensen met autisme in Delfgauw. Een huis voor negen bewoners.",
     },
