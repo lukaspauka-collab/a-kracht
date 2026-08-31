@@ -32,8 +32,8 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     metadataBase: new URL(s.url),
     title: {
-      default: `${s.name} — Kleinschalige begeleiding bij autisme`,
-      template: `%s — ${s.name}`,
+      default: `${s.name} | Kleinschalige begeleiding bij autisme`,
+      template: `%s | ${s.name}`,
     },
     description: s.description,
     applicationName: s.name,
@@ -45,12 +45,12 @@ export async function generateMetadata(): Promise<Metadata> {
       locale: "nl_NL",
       url: s.url,
       siteName: s.name,
-      title: `${s.name} — Kleinschalige begeleiding bij autisme`,
+      title: `${s.name} | Kleinschalige begeleiding bij autisme`,
       description: s.description,
     },
     twitter: {
       card: "summary_large_image",
-      title: `${s.name} — Kleinschalige begeleiding bij autisme`,
+      title: `${s.name} | Kleinschalige begeleiding bij autisme`,
       description: s.description,
     },
     robots: {
